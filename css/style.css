@@ -1,0 +1,258 @@
+#body {
+    margin: 5%
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+/* Logo */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+/* Recherche */
+#recherche {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#barre-de-recherche {
+    width: 95%;
+    height: 80px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 5px 0 0 5px;
+    border: 0;
+    padding-left: 2%;
+    font-size: 20px;
+}
+#loupe {
+    width: 5%;
+    height: 80px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 0 5px 5px 0;
+    border: 0;
+    font-size: 30px;
+}
+#loupe:hover {
+    cursor: pointer;
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+/* Boutons */
+.bouton {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    width: 200px;
+    height: 80px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#ingredients {
+     background-color: blue;
+}
+#appareils {
+    background-color: green;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#ustensiles {
+    background-color: red;
+}
+
+.bouton:hover, .bouton:focus {
+    background: #D3573C;
+    color: black;
+    border: 0px;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------*/
+/* Cartes des recettes */
+#recettes_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.detailsRecette {
+    height: 500px;
+    width: 500px;
+    padding: 0;
+    border: 0;
+    border-radius:5px;
+    margin-bottom: 50px;
+}
+.vide {
+    height: 200px;
+    background-color: rgb(182, 174, 174);
+    margin: 0;
+    border-radius:5px 5px 0 0;
+}
+.nomTempsIngredientsRecette {
+    margin-top: 10px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 10px;
+}
+.nomTemps {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.ingredientsDescription {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Ingredients h3 {
+    text-align: left;
+}
+.descriptionContenant {
+    width: 55%;
+    text-align: left;
+    height: 170px;
+    text-overflow: ellipsis;
+    /*text-overflow: "…";*/
+}
+.description {
+    /*width: 55%;
+    text-align: left;*/
+    height: 180px;
+    overflow: hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}
+
+
+.description {
+	/*--max-lines: 3;*/
+	position: relative;
+	/*max-height: calc(var(--lh) * var(--max-lines));*/
+	overflow: hidden;
+	padding-right: 5px; /* space for ellipsis */
+}
+.description::before {
+	position: absolute;
+	content: "...";
+	inset-block-end: 0; /* "bottom" */
+	inset-inline-end: 0; /* "right" */
+}
+/*.description::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	width: 1rem;
+	height: 1rem;
+	background: white;
+}*/
+
+.detailsRecette:hover {
+    cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------*/
+/* Lightbox */
+/* Arrière plan */
+/*.modal-lightbox {*/
+#lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+/* Contenu de la lightbox */
+#contenu-lightbox {
+    background-color: white;
+    /* margin: auto; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* flex-wrap: nowrap; */
+    justify-content: center;
+    position: fixed;
+}
+
+/* Le bouton fermeture */
+.fermer {
+    color: #901C1C;
+    position: relative;
+    top: 40px;
+    left: 500px;
+    font-size: 90px;
+    transition: 0.6s ease;
+    background-color: white;
+    border: 0;
+}
+
+.fermer:hover,
+.fermer:focus {
+    background-color: #D3573C;
+    color: black;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.image-lightbox {
+    display: none;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.imagetitre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagetitre img, .imagetitre video {
+    width: 600px;
+    height: 600px;
+    margin: 60px;
+    margin-bottom: 10px;
+    object-fit:cover;
+}
+
+.imagePrecSuiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+/* Boutons précédant et suivant */
+.precedant,
+.suivant {
+    cursor: pointer;
+    color: #901C1C;
+    font-weight: bold;
+    font-size: 50px;
+    transition: 0.6s ease;
+    border-radius: 3px;
+    background-color: white;
+    border: 0px;
+}
+
+.precedant:hover,
+.suivant:hover,
+.precedant:focus,
+.suivant:focus {
+    background-color: #D3573C;
+    color: black;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.titre-lightbox {
+    color: #901C1C;
+    font-size: 20px;
+    padding: 8px 12px;
+    text-align: center;
+}
