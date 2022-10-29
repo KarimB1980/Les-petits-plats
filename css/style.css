@@ -7,6 +7,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 20px;
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 /* Recherche */
@@ -77,8 +78,14 @@ header {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+h3 {
+    font-family: Arial;
+}
+article {
+    background-color: rgb(236, 236, 236);
+}
 .detailsRecette {
-    height: 500px;
+    height: 100%;
     width: 500px;
     padding: 0;
     border: 0;
@@ -86,7 +93,7 @@ header {
     margin-bottom: 50px;
 }
 .vide {
-    height: 200px;
+    height: 250px;
     background-color: rgb(182, 174, 174);
     margin: 0;
     border-radius:5px 5px 0 0;
@@ -101,53 +108,48 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 .ingredientsDescription {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+.Ingredients {
+    margin-right: 20px;
+}
 .Ingredients h3 {
     text-align: left;
+    margin: 0;
+    width: 200px;
 }
 .descriptionContenant {
-    width: 55%;
     text-align: left;
     height: 170px;
     text-overflow: ellipsis;
-    /*text-overflow: "…";*/
-}
-.description {
-    /*width: 55%;
-    text-align: left;*/
-    height: 180px;
-    overflow: hidden;
-    white-space: wrap;
-    text-overflow: ellipsis;
 }
 
-
 .description {
-	/*--max-lines: 3;*/
-	position: relative;
-	/*max-height: calc(var(--lh) * var(--max-lines));*/
-	overflow: hidden;
-	padding-right: 5px; /* space for ellipsis */
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 100;
 }
-.description::before {
-	position: absolute;
-	content: "...";
-	inset-block-end: 0; /* "bottom" */
-	inset-inline-end: 0; /* "right" */
+.nomRecette {
+    font-size: 20px;
+    font-weight: 100;
 }
-/*.description::after {
-	content: "";
-	position: absolute;
-	right: 0;
-	width: 1rem;
-	height: 1rem;
-	background: white;
-}*/
+.tempsRecette {
+    font-size: 25px;
+}
+.ingredientRecette {
+    font-size: 15px;
+}
 
 .detailsRecette:hover {
     cursor: pointer;
@@ -157,6 +159,15 @@ header {
 /* Lightbox */
 /* Arrière plan */
 /*.modal-lightbox {*/
+.RecetteDuPlat h2 {
+    font-family: Arial;
+    font-size: 40px;
+}
+.temps-lightbox {
+    font-family: Arial;
+    font-size: 30px;
+}
+
 #lightbox {
     display: none;
     position: fixed;
@@ -206,7 +217,9 @@ header {
     display: flex;
     text-align: center;
     justify-content: center;
-    width: 80%;
+    /*width: 80%;*/
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .imagetitre {
@@ -255,4 +268,24 @@ header {
     font-size: 20px;
     padding: 8px 12px;
     text-align: center;
+}
+
+.ListeDesIngredients {
+    color: red;
+    font-size: 1.5em;
+}
+.ingredientRecetteLightbox {
+    color: red;
+}
+.appareils-lightbox {
+    color: blue;
+    font-size: 1.5em;
+}
+.ustensiles-lightbox {
+    color: green;
+    font-size: 1.5em;
+}
+.recette-lightbox {
+    color: orchid;
+    font-size: 1.5eem;
 }
