@@ -50,18 +50,25 @@ header {
     cursor: pointer;
     margin-top: 20px;
     margin-bottom: 20px;
+    justify-content: space-between;
 }
-
+.valeurIngredients, .valeurAppareils, .valeurUstensiles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 7%;
+    margin-right: 7%;
+}
 #ingredients {
-     background-color: blue;
+     background-color: rgb(0, 140, 255);
 }
 #appareils {
-    background-color: green;
+    background-color: rgb(113, 197, 148);
     margin-left: 20px;
     margin-right: 20px;
 }
 #ustensiles {
-    background-color: red;
+    background-color: rgb(240, 105, 105);
 }
 
 .bouton:hover, .bouton:focus {

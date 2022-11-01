@@ -16,7 +16,6 @@ function recette() {
     listeRecette += `        <div class="Ingredients">`
 
     let ingredientRecette = recipes[i].ingredients;
-    console.log(ingredientRecette);
     for (j= 0; j < ingredientRecette.length; j++) {
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
         listeRecette += `    <h3 class="ingredientRecette"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
@@ -75,8 +74,7 @@ function recette() {
 }
 
 
-
-  //Fonction de reconnaissance des touches flèche gauche, flèche droite et esc pour l'utilisation au clavier de la lightbox
+//Fonction de reconnaissance des touches flèche gauche, flèche droite et esc pour l'utilisation au clavier de la lightbox
 function clavierLightboxFormulaire() {
   document.onkeydown = (evenement) => {
     evenement = evenement || window.event;
