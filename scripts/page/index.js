@@ -7,12 +7,13 @@ function initialisation() {
 
   enteteindex += `<header>`
   enteteindex += `  <img src="assets/logo.png" id="logo" alt="Les petits plats">`
-  //enteteindex += `  <h1>Nos photographes</h1>`
   enteteindex += `</header>`
   enteteindex += `<section id="recherche">`
-  //enteteindex += `  <label for="site-search">Recherche</label>`
-  enteteindex += `  <input type="search" id="barre-de-recherche" name="recherche" placeholder="Rechercher une recette" minlength="4">`
-  enteteindex += `  <button id="loupe"><i class="fa fa-search" aria-hidden="true"></i></button>`
+  enteteindex += `  <div id="barre-de-recherche-loupe">`
+  enteteindex += `    <input type="search" id="barre-de-recherche" name="recherche" placeholder="Rechercher une recette" minlength="4">`
+  enteteindex += `    <button id="loupe"><i class="fa fa-search" aria-hidden="true"></i></button>`
+  enteteindex += `  </div>`
+  enteteindex += `  <div id="messageErreurRecherche"></div>`
   enteteindex += `</section>`
   enteteindex += `<nav>`
   enteteindex += `  <div id="menu">`
@@ -145,11 +146,24 @@ function barreDeRecherche() {
         let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
         console.log(ElementsTrouvesSansDoublons);
 
+        if (ElementsTrouvesSansDoublons == "") {
+          // Affichage du message d'erreur sous le champ "Rechercher une recette"
+          document.querySelector("#messageErreurRecherche").innerHTML = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc";
+          // Contour de couleur bleue du champ "Rechercher une recette"
+          document.getElementById('barre-de-recherche').style.border="2px solid red";
+
+        } else {
+          document.querySelector("#messageErreurRecherche").innerHTML = "";
+          // Contour de couleur bleue du champ "Rechercher une recette"
+          document.getElementById('barre-de-recherche').style.border="0px solid red";
+
+        }
+
         let listeRecette = '';
         let recetteLightBox = '';
-      
+
         for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
-      
+
           // Affichage des recettes et création du contenu de la lightbox
           listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
           listeRecette += `    <div class="vide"></div>`
@@ -160,7 +174,7 @@ function barreDeRecherche() {
           listeRecette += `      </div>`
           listeRecette += `      <div class="ingredientsDescription">`
           listeRecette += `        <div class="Ingredients">`
-      
+
           let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
           for (j= 0; j < ingredientRecette.length; j++) {
             if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
@@ -218,8 +232,67 @@ function barreDeRecherche() {
         let contenuLightbox = document.querySelector("#contenu-lightbox");
         contenuLightbox.innerHTML= recetteLightBox;
       
+
+      
+
+        function listeIngredientsBarreDeRecherche() {
+          let ingredients = document.querySelector("#ingredients");
+          ingredients.addEventListener("click", () =>
+            {
+              let listeIngredientsRecettes = [];
+              for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
+                let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
+                for (j= 0; j < ingredientRecette.length; j++) {
+                  listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
+                }
+              }
+              // Supression des doublons du tableau "listeIngredientsRecettes"
+              let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
+              console.log(listeDesIngredients);
+            }
+          )
+        }
+        listeIngredientsBarreDeRecherche();
+    
+        function listeAppareilsBarreDeRecherche() {
+          let appareils = document.querySelector("#appareils");
+          appareils.addEventListener("click", () =>
+            {
+              let listeAppareilsRecettes = [];
+              for(let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
+                listeAppareilsRecettes.push(ElementsTrouvesSansDoublons[i].appliance);
+              }
+              // Tri par ordre alphabétique des valeurs
+              listeAppareilsRecettes.sort();
+              // Supression des doublons du tableau "appareilsRecettes"
+              let appareilsDesRecettes = [...new Set(listeAppareilsRecettes)];
+              console.log(appareilsDesRecettes);
+            }
+          )
+        }
+        listeAppareilsBarreDeRecherche();
+
+        function listeUstensilesBarreDeRecherche() {
+          let ustensiles = document.querySelector("#ustensiles");
+          ustensiles.addEventListener("click", () =>
+            {
+              let ustensilesRecettes = [];
+              for(let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
+                // Injection des valeurs dans le tableau "ustensilesRecettes" en les fusionnant
+                ustensilesRecettes.push(...ElementsTrouvesSansDoublons[i].ustensils);
+              }
+              // Tri par ordre alphabétique des valeurs
+              ustensilesRecettes.sort();
+              // Supression des doublons du tableau "ustensilesRecettes"
+              let ustensilesRecettesDesRecettes = [...new Set(ustensilesRecettes)];
+              console.log(ustensilesRecettesDesRecettes);
+            }
+          )
+        }
+        listeUstensilesBarreDeRecherche();  
       }
     }
   )
 }
 barreDeRecherche();
+
