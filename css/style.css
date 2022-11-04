@@ -39,12 +39,15 @@ header {
 /* Ajout des propriétés du message d'erreur du formulaire */
 #messageErreurRecherche {
     font-family: Arial;
-    color: red;
     font-size: 20px;
     margin: 0;
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 /* Boutons */
+#menu {
+    display: flex;
+    flex-direction: row;
+}
 .bouton {
     font-size: 20px;
     font-weight: bold;
@@ -59,6 +62,35 @@ header {
     margin-bottom: 20px;
     justify-content: space-between;
 }
+.ingredients-recherche-angle-up, .appareils-recherche-angle-up, .ustensiles-recherche-angle-up {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.ingredients-recherche-angle-up-liste {
+    /*margin-left: 20px;*/
+    margin-right: 20px;
+}
+.appareils-recherche-angle-up-liste {
+    /*margin-left: 20px;*/
+    margin-right: 20px;
+}
+
+.ingredients-recherche-angle-up em, .appareils-recherche-angle-up em, .ustensiles-recherche-angle-up em {
+    background-color: rgb(0, 140, 255);
+    height: 80px;
+    border-radius: 0 5px 0 0;
+    line-height: 80px;
+    color: white;
+    padding-right: 20px;
+    font-size: 20px;
+}
+.appareils-recherche-angle-up em{
+    background-color: rgb(113, 197, 148);
+}
+.ustensiles-recherche-angle-up em{
+    background-color: rgb(240, 105, 105);
+}
 .valeurIngredients, .valeurAppareils, .valeurUstensiles {
     display: flex;
     flex-direction: row;
@@ -71,19 +103,71 @@ header {
 }
 #appareils {
     background-color: rgb(113, 197, 148);
-    margin-left: 20px;
-    margin-right: 20px;
+    /*margin-left: 20px;*/
+    /*margin-right: 20px;*/
 }
 #ustensiles {
     background-color: rgb(240, 105, 105);
 }
-
 .bouton:hover, .bouton:focus {
     background: #D3573C;
     color: black;
     border: 0px;
 }
-
+#ingredients-recherche, #appareils-recherche, #ustensiles-recherche {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    width: 700px;
+    height: 80px;
+    border: none;
+    background-color: rgb(0, 140, 255);
+    border-radius: 5px 0 0 0px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 0;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+#appareils-recherche {
+    background-color: rgb(113, 197, 148);
+}
+#ustensiles-recherche {
+    background-color: rgb(240, 105, 105);
+}
+#ingredients-recherche::placeholder {
+    color: rgb(123, 209, 255);
+}
+#appareils-recherche::placeholder {
+    color: rgb(190, 248, 215);
+}
+#ustensiles-recherche::placeholder {
+    color: rgb(255, 194, 194);
+}
+.tableau-des-ingredients, .tableau-des-appareils, .tableau-des-ustensiles {
+    position: absolute;
+    width: 697.5px;
+    margin-top: -20px;
+    background-color: rgb(0, 140, 255);
+    color: white;
+    font-family: Arial;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0 0 5px 5px;
+    flex-direction: row;
+    columns: 3 auto;
+}
+.tableau-des-appareils {
+    background-color: rgb(113, 197, 148);
+}
+.tableau-des-ustensiles {
+    background-color: rgb(240, 105, 105);
+}
+.tableau-ingredients-filtres, .tableau-appareils-filtres, .tableau-ustensiles-filtres {
+    margin-bottom: 10px;
+}
 /*----------------------------------------------------------------------------------------------------------------------*/
 /* Cartes des recettes */
 #recettes_section {
