@@ -227,7 +227,7 @@ function listeIngredients(tableauRecettes = recipes) {
       console.log(listeDesIngredients);
 
       for (let j = 0; j < listeDesIngredients.length; j++) {
-        let tableauIngredientsFiltres = document.createElement("div");
+        let tableauIngredientsFiltres = document.createElement("button");
         tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
         document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
 
@@ -271,7 +271,7 @@ function listeAppareils(tableauRecettes = recipes) {
 
 
       for (let j = 0; j < appareilsDesRecettes.length; j++) {
-        let tableauAppareilsFiltres = document.createElement("div");
+        let tableauAppareilsFiltres = document.createElement("button");
         tableauAppareilsFiltres.setAttribute("class", "tableau-appareils-filtres");
         document.querySelector(".tableau-des-appareils").appendChild(tableauAppareilsFiltres);
 
@@ -315,8 +315,8 @@ function listeUstensiles(tableauRecettes = recipes) {
 
 
       for (let j = 0; j < ustensilesDesRecettes.length; j++) {
-        let tableauUstensilesFiltres = document.createElement("div");
-        tableauUstensilesFiltres.setAttribute("class", "tableau-appareils-filtres");
+        let tableauUstensilesFiltres = document.createElement("button");
+        tableauUstensilesFiltres.setAttribute("class", "tableau-ustensiles-filtres");
         document.querySelector(".tableau-des-ustensiles").appendChild(tableauUstensilesFiltres);
 
         tableauUstensilesFiltres.innerText = ustensilesDesRecettes[j];
