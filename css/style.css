@@ -32,13 +32,17 @@ header {
     border-radius: 0 5px 5px 0;
     border: 0;
     font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-#loupe:hover {
+/*#loupe:hover {
     cursor: pointer;
-}
-/* Ajout des propriétés du message d'erreur du formulaire */
+}*/
+/* Ajout des propriétés du message d'erreur du champs de recherche */
 #messageErreurRecherche {
     font-family: Arial;
+    color: red;
     font-size: 20px;
     margin: 0;
 }
@@ -76,19 +80,24 @@ header {
     margin-right: 20px;
 }
 
-.ingredients-recherche-angle-up em, .appareils-recherche-angle-up em, .ustensiles-recherche-angle-up em {
+/*.ingredients-recherche-angle-up em, .appareils-recherche-angle-up em, .ustensiles-recherche-angle-up em {*/
+.ingredients-recherche-angle-up button, .appareils-recherche-angle-up button, .ustensiles-recherche-angle-up button {
+
     background-color: rgb(0, 140, 255);
     height: 80px;
     border-radius: 0 5px 0 0;
     line-height: 80px;
     color: white;
-    padding-right: 20px;
+    padding-right: 14.5px;
     font-size: 20px;
+    border: 0;
 }
-.appareils-recherche-angle-up em{
+/*.appareils-recherche-angle-up em{*/
+.appareils-recherche-angle-up button{
     background-color: rgb(113, 197, 148);
 }
-.ustensiles-recherche-angle-up em{
+/*.ustensiles-recherche-angle-up em{*/
+.ustensiles-recherche-angle-up button{
     background-color: rgb(240, 105, 105);
 }
 .valeurIngredients, .valeurAppareils, .valeurUstensiles {
@@ -167,6 +176,9 @@ header {
 }
 .tableau-ingredients-filtres, .tableau-appareils-filtres, .tableau-ustensiles-filtres {
     margin-bottom: 10px;
+}
+.fa-angle-up:hover {
+    cursor: pointer;
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 /* Cartes des recettes */
@@ -326,13 +338,14 @@ article {
     align-items: center;
 }
 
-.imagetitre img, .imagetitre video {
+/*.recettetitre img
+/*, .recettetitre video {
     width: 600px;
     height: 600px;
     margin: 60px;
     margin-bottom: 10px;
     object-fit:cover;
-}
+}*/
 
 .imagePrecSuiv {
     display: flex;
