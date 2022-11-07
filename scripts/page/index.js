@@ -73,13 +73,11 @@ function barreDeRecherche() {
   champDeRecherche.addEventListener("keyup", () =>
     {
       if (champDeRecherche.value.length >= 3) {
-        //let elementsDeRecherche = [];
         let elementsTrouves = [];
         for(let i = 0; i < recipes.length; i++) {
           let champDeRechercheEnMinuscules = champDeRecherche.value.toLowerCase();
           let NomRecetteActuelleEnMinuscules = recipes[i].name.toLowerCase();
           let DescriptionRecetteActuelleEnMinuscules = recipes[i].description.toLowerCase();
-          //let IngredientsRecetteActuelleEnMinuscules = recipes[i].ingredients.ingredient.toLowerCase();
 
           // Recherche de la valeur dans le nom de la recette
           let resultatNom = NomRecetteActuelleEnMinuscules.includes(champDeRechercheEnMinuscules);
@@ -100,7 +98,6 @@ function barreDeRecherche() {
           //console.log(ingredientRecette);
           for (j= 0; j < ingredientRecette.length; j++) {
             let NomIngredientRecetteActuelleEnMinuscules = ingredientRecette[j].ingredient.toLowerCase();
-            //console.log(NomIngredientRecetteActuelleEnMinuscules);
             let resultatIngredients = NomIngredientRecetteActuelleEnMinuscules.includes(champDeRechercheEnMinuscules);
 
             if (resultatIngredients==true) {
@@ -305,6 +302,9 @@ function barreDeRecherche() {
         listeUstensilesBarreDeRecherche();  
       } else {
         recette();
+        listeIngredients();
+        listeAppareils();
+        listeUstensiles();
       }
 
     }
@@ -322,11 +322,8 @@ function listeIngredients() {
       let listeIngredientsRecettes = [];
       for (let i = 0; i < recipes.length; i++) {
         let ingredientRecette = recipes[i].ingredients;
-        //console.log(ingredientRecette);
         for (j= 0; j < ingredientRecette.length; j++) {
-          //console.log(ingredientRecette[j].ingredient);
           listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
-          //console.log(listeIngredientsRecettes);
         }
       }
       // Tri par ordre alphabétique des valeurs
@@ -345,20 +342,17 @@ function listeIngredients() {
 
       document.querySelector("#ingredients-recherche").style.display = "block";
       document.querySelector(".tableau-des-ingredients").style.display = "block";
-      //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > em").style.display = "block";
       document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > button").style.display = "block";
 
       document.querySelector("#ingredients").style.display = "none";
 
       document.querySelector("#appareils-recherche").style.display = "none";
       document.querySelector(".tableau-des-appareils").style.display = "none";
-      //document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > em").style.display = "none";
       document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > button").style.display = "none";
       document.querySelector("#appareils").style.display = "block";
 
       document.querySelector("#ustensiles-recherche").style.display = "none";
       document.querySelector(".tableau-des-ustensiles").style.display = "none";
-      //document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > em").style.display = "none";
       document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > button").style.display = "none";
       document.querySelector("#ustensiles").style.display = "block";
     }
@@ -392,19 +386,16 @@ function listeAppareils() {
 
       document.querySelector("#appareils-recherche").style.display = "block";
       document.querySelector(".tableau-des-appareils").style.display = "block";
-      //document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > em").style.display = "block";
       document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > button").style.display = "block";
       document.querySelector("#appareils").style.display = "none";
 
       document.querySelector("#ingredients-recherche").style.display = "none";
       document.querySelector(".tableau-des-ingredients").style.display = "none";
-      //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > em").style.display = "none";
       document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > button").style.display = "none";
       document.querySelector("#ingredients").style.display = "block";
 
       document.querySelector("#ustensiles-recherche").style.display = "none";
       document.querySelector(".tableau-des-ustensiles").style.display = "none";
-      //document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > em").style.display = "none";
       document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > button").style.display = "none";
       document.querySelector("#ustensiles").style.display = "block";
     }
@@ -439,19 +430,16 @@ function listeUstensiles() {
 
       document.querySelector("#ustensiles-recherche").style.display = "block";
       document.querySelector(".tableau-des-ustensiles").style.display = "block";
-      //document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > em").style.display = "block";
       document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > button").style.display = "block";
       document.querySelector("#ustensiles").style.display = "none";
 
       document.querySelector("#appareils-recherche").style.display = "none";
       document.querySelector(".tableau-des-appareils").style.display = "none";
-      //document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > em").style.display = "none";
       document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > button").style.display = "none";
       document.querySelector("#appareils").style.display = "block";
 
       document.querySelector("#ingredients-recherche").style.display = "none";
       document.querySelector(".tableau-des-ingredients").style.display = "none";
-      //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > em").style.display = "none";
       document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > button").style.display = "none";
       document.querySelector("#ingredients").style.display = "block";
     }
@@ -466,19 +454,16 @@ function clickFaAngleUp() {
       {
         document.querySelector("#ingredients-recherche").style.display = "none";
         document.querySelector(".tableau-des-ingredients").style.display = "none";
-        //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > em").style.display = "none";
         document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > button").style.display = "none";
         document.querySelector("#ingredients").style.display = "block";
 
         document.querySelector("#appareils-recherche").style.display = "none";
         document.querySelector(".tableau-des-appareils").style.display = "none";
-        //document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > em").style.display = "none";
         document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > button").style.display = "none";
         document.querySelector("#appareils").style.display = "block";
 
         document.querySelector("#ustensiles-recherche").style.display = "none";
         document.querySelector(".tableau-des-ustensiles").style.display = "none";
-        //document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > em").style.display = "none";
         document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > button").style.display = "none";
         document.querySelector("#ustensiles").style.display = "block";
       }
