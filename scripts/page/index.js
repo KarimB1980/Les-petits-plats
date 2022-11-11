@@ -19,18 +19,21 @@ function initialisation() {
   enteteindex += `<nav>`
   enteteindex += `  <div id="menu">`
 
-  enteteindex += `    <button tabindex="0" id="ingredients" class="bouton"><p class="valeurIngredients"> Ingrédients <em class="fa fa-angle-down"></em></p></button>`
-  enteteindex += `    <div class="ingredients-recherche-angle-up-liste">`
-  enteteindex += `      <div class="ingredients-recherche-angle-up">`
-  enteteindex += `        <input type="search" id="ingredients-recherche" name="ingredients-recherche" placeholder="Rechercher un ingrédient" minlength="3" style="display: none;">`
-  //enteteindex += `        <em class="fa fa-angle-up" tabindex="0" style="display: none;"></em>`
-  enteteindex += `        <button class="fa fa-angle-up" style="display: none"></button>`
+  enteteindex += `    <div class="boutons-ingredients-recherche-angle-up-liste">`
+  //enteteindex += `      <button tabindex="0" id="ingredients" class="bouton"><p class="valeurIngredients"> Ingrédients <em class="fa fa-angle-down"></em></p></button>`
+  enteteindex += `      <div class="ingredients-recherche-angle-up-liste">`
+  enteteindex += `        <div class="buttonsIngredientsRecherches"></div>`
+  enteteindex += `        <div class="ingredients-recherche-angle-up">`
+  enteteindex += `          <input type="search" id="ingredients-recherche" name="ingredients-recherche" placeholder="Rechercher un ingrédient" minlength="3" style="display: none;">`
+  //enteteindex += `          <em class="fa fa-angle-up" tabindex="0" style="display: none;"></em>`
+  enteteindex += `          <button class="fa fa-angle-up" style="display: none"></button>`
+  enteteindex += `        </div>`
+  enteteindex += `        <div class="tableau-des-ingredients"></div>`
   enteteindex += `      </div>`
-  enteteindex += `      <div class="tableau-des-ingredients"></div>`
+  enteteindex += `      <button tabindex="0" id="ingredients" class="bouton"><p class="valeurIngredients"> Ingrédients <em class="fa fa-angle-down"></em></p></button>`
   enteteindex += `    </div>`
 
-  enteteindex += `    <button tabindex="0" id="appareils" class="bouton"><p class="valeurAppareils"> Appareils <em class="fa fa-angle-down"></em></p></button>`
-  enteteindex += `    <div class="appareils-recherche-angle-up-liste">`
+  enteteindex += `    <div class="appareils-recherche-angle-up-liste" id="appareils-recherche-angle-up1">`
   enteteindex += `      <div class="appareils-recherche-angle-up">`
   enteteindex += `        <input type="search" id="appareils-recherche" name="appareils-recherche" placeholder="Rechercher un appareil" minlength="3" style="display: none;">`
   //enteteindex += `        <em class="fa fa-angle-up" tabindex="0" style="display: none;"></em>`
@@ -38,8 +41,9 @@ function initialisation() {
   enteteindex += `      </div>`
   enteteindex += `      <div class="tableau-des-appareils"></div>`
   enteteindex += `    </div>`
+  enteteindex += `    <button tabindex="0" id="appareils" class="bouton"><p class="valeurAppareils"> Appareils <em class="fa fa-angle-down"></em></p></button>`
 
-  enteteindex += `    <button tabindex="0" id="ustensiles" class="bouton"><p class="valeurUstensiles"> Ustensiles <em class="fa fa-angle-down"></em></p></button>`
+
   enteteindex += `    <div class="ustensiles-recherche-angle-up-liste">`
   enteteindex += `      <div class="ustensiles-recherche-angle-up">`
   enteteindex += `        <input type="search" id="ustensiles-recherche" name="ustensiles-recherche" placeholder="Rechercher un ustensile" minlength="3" style="display: none;">`
@@ -48,6 +52,8 @@ function initialisation() {
   enteteindex += `      </div>`
   enteteindex += `      <div class="tableau-des-ustensiles"></div>`
   enteteindex += `    </div>`
+  enteteindex += `    <button tabindex="0" id="ustensiles" class="bouton"><p class="valeurUstensiles"> Ustensiles <em class="fa fa-angle-down"></em></p></button>`
+
 
   enteteindex += `  </div>`
   enteteindex += `</nav>`
@@ -190,7 +196,7 @@ function barreDeRecherche() {
         // Injection du nouveau code html dans le DOM
         let idRealisations = document.querySelector('#recettes_section');
         idRealisations.innerHTML = listeRecette;
-      
+
         let contenuLightbox = document.querySelector("#contenu-lightbox");
         contenuLightbox.innerHTML= recetteLightBox;
 
@@ -221,7 +227,7 @@ function listeIngredients(tableauRecettes = recipes) {
         }
       }
       // Tri par ordre alphabétique des valeurs
-      //listeIngredientsRecettes.sort();
+      listeIngredientsRecettes.sort();
       // Supression des doublons du tableau "listeIngredientsRecettes"
       let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
       console.log(listeDesIngredients);
@@ -234,9 +240,43 @@ function listeIngredients(tableauRecettes = recipes) {
         tableauIngredientsFiltres.innerText = listeDesIngredients[j];
       }
 
+      let champDeRechercheIngredients = document.querySelector("#ingredients-recherche");
+      champDeRechercheIngredients.addEventListener("keyup", () =>
+        {
+          if (champDeRechercheIngredients.value.length >= 3) {
+            console.log("3 caractères minimum ça marche");
+            document.querySelector(".tableau-des-ingredients").innerHTML = "";
+            let ingredientsTrouves = [];
+            //let elementsTrouves = [];
+            for(let i = 0; i < listeDesIngredients.length; i++) {
+              let champDeRechercheEnMinuscules = champDeRechercheIngredients.value.toLowerCase();
+              let resultatIngredients = listeDesIngredients[i].toLowerCase().includes(champDeRechercheEnMinuscules);
+              if (resultatIngredients==true) {
+                ingredientsTrouves.push(listeDesIngredients[i]);
+                //elementsTrouves.push(listeDesIngredients[i]);
+              }
+            }
+            console.log(ingredientsTrouves);
+            //console.log(elementsTrouves);
+
+            for (let j = 0; j < ingredientsTrouves.length; j++) {
+            //for (let j = 0; j < elementsTrouves.length; j++) {
+              let tableauIngredientsFiltres = document.createElement("button");
+              tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
+              document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
+              tableauIngredientsFiltres.innerText = ingredientsTrouves[j];
+              //tableauIngredientsFiltres.innerText = elementsTrouves[j];
+            }
+          }
+        }
+      )
+
       document.querySelector("#ingredients-recherche").style.display = "block";
       document.querySelector(".tableau-des-ingredients").style.display = "block";
-      document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > button").style.display = "block";
+      //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > button").style.display = "block";
+      //document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "block";
+      //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div.ingredients-recherche-angle-up > button").style.display = "block";
+      document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "block";
 
       document.querySelector("#ingredients").style.display = "none";
 
@@ -249,6 +289,8 @@ function listeIngredients(tableauRecettes = recipes) {
       document.querySelector(".tableau-des-ustensiles").style.display = "none";
       document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > button").style.display = "none";
       document.querySelector("#ustensiles").style.display = "block";
+
+      clicBoutonlisteIngredients();
     }
   )
 }
@@ -348,20 +390,175 @@ function clickFaAngleUp() {
       {
         document.querySelector("#ingredients-recherche").style.display = "none";
         document.querySelector(".tableau-des-ingredients").style.display = "none";
-        document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div > button").style.display = "none";
+        document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
+        //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div.ingredients-recherche-angle-up > button").style.display = "none";
+        //document.querySelector("#menu > div.ingredients-recherche-angle-up-liste > div.ingredients-recherche-angle-up > button").style.display = "none";
+        //document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
+
+        //document.querySelector(".fa-angle-up").style.display = "none";
         document.querySelector("#ingredients").style.display = "block";
 
         document.querySelector("#appareils-recherche").style.display = "none";
         document.querySelector(".tableau-des-appareils").style.display = "none";
         document.querySelector("#menu > div.appareils-recherche-angle-up-liste > div > button").style.display = "none";
+        //document.querySelector(".fa-angle-up").style.display = "none";
         document.querySelector("#appareils").style.display = "block";
 
         document.querySelector("#ustensiles-recherche").style.display = "none";
         document.querySelector(".tableau-des-ustensiles").style.display = "none";
         document.querySelector("#menu > div.ustensiles-recherche-angle-up-liste > div > button").style.display = "none";
+        //document.querySelector(".fa-angle-up").style.display = "none";
         document.querySelector("#ustensiles").style.display = "block";
+
+        //listeIngredients();
       }
     )
   )
 }
 clickFaAngleUp();
+
+function clicBoutonlisteIngredients(tableauRecettes = recipes) {
+  let clicBoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
+  clicBoutonIngredients.forEach((clicBoutonIngredient) => 
+    clicBoutonIngredient.addEventListener("click", () =>
+      {
+        console.log("clicBoutonlisteIngredients ça marche")
+        document.querySelector("#ingredients-recherche").value = clicBoutonIngredient.textContent;
+        let elementsTrouves = [];
+        let champDeRecherche = document.querySelector("#ingredients-recherche");
+        for(let i = 0; i < tableauRecettes.length; i++) {
+          let champDeRechercheEnMinuscules = champDeRecherche.value.toLowerCase();
+          // Recherche de la valeur dans les ingrédients de la recette
+          let ingredientRecette = tableauRecettes[i].ingredients;
+          for (j= 0; j < ingredientRecette.length; j++) {
+            let NomIngredientRecetteActuelleEnMinuscules = ingredientRecette[j].ingredient.toLowerCase();
+            let resultatIngredients = NomIngredientRecetteActuelleEnMinuscules.includes(champDeRechercheEnMinuscules);
+            if (resultatIngredients==true) {
+              elementsTrouves.push(tableauRecettes[i]);
+            }
+          }
+        }
+        //console.log(elementsTrouves);
+        let boutonIngredientFiltre = document.createElement("button");
+        boutonIngredientFiltre.setAttribute("class", "bouton-ingredient-filtre");
+        boutonIngredientFiltre.setAttribute("name", document.querySelector("#ingredients-recherche").value);
+
+        let croixIngredientFiltre = document.createElement("i");
+        croixIngredientFiltre.setAttribute("class", "fa-regular fa-circle-xmark");
+        //document.querySelector(".ingredients-recherche-angle-up-liste").prepend(boutonIngredientFiltre);
+        document.querySelector(".buttonsIngredientsRecherches").prepend(boutonIngredientFiltre);
+        boutonIngredientFiltre.textContent = document.querySelector("#ingredients-recherche").value, croixIngredientFiltre;
+        document.querySelector(".bouton-ingredient-filtre").appendChild(croixIngredientFiltre);
+
+        listeDesBoutonsIngredients(tableauRecettes = elementsTrouves);
+        clicBoutonFiltreIngredient();
+
+      }
+    )
+  )
+}
+
+//function listeDesBoutonsIngredients(tableauRecettes = recipes) {
+function listeDesBoutonsIngredients(tableauRecettes = recipes) {
+  let elementsTrouves = [];
+  let listeBoutonsIngredient = document.querySelectorAll(".bouton-ingredient-filtre");
+  listeBoutonsIngredient.forEach((boutonIngredient) => 
+    {
+      for (let i = 0; i < tableauRecettes.length; i++) {
+        let ingredientRecette = tableauRecettes[i].ingredients;
+        for (j= 0; j < ingredientRecette.length; j++) {
+          if (ingredientRecette[j].ingredient == boutonIngredient.name) {
+            elementsTrouves.push(tableauRecettes[i]);
+          }
+        }
+      }
+    }
+  )
+  let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
+  console.log(ElementsTrouvesSansDoublons);
+
+  
+  let listeRecette = '';
+  let recetteLightBox = '';
+
+  for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
+
+    // Affichage des recettes et création du contenu de la lightbox
+    listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
+    listeRecette += `    <div class="vide"></div>`
+    listeRecette += `    <div class="nomTempsIngredientsRecette">`
+    listeRecette += `      <div class="nomTemps">`
+    listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+    listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
+    listeRecette += `      </div>`
+    listeRecette += `      <div class="ingredientsDescription">`
+    listeRecette += `        <div class="Ingredients">`
+
+    let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
+    for (j= 0; j < ingredientRecette.length; j++) {
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
+        listeRecette += `    <h3 class="ingredientRecette"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+      }
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
+        listeRecette += `    <h3 class="ingredientRecette"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+      }
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
+        listeRecette += `    <h3 class="ingredientRecette"> ${ingredientRecette[j].ingredient}</h3>`
+      }
+    }
+
+    listeRecette += `        </div>`
+    listeRecette += `        <div class="descriptionContenant">`
+    listeRecette += `          <h3 class="description">${ElementsTrouvesSansDoublons[i].description}</h3>`
+    listeRecette += `        </div>`
+    listeRecette += `      </div>`
+    listeRecette += `    </div>`
+    listeRecette += `  </button>`
+
+    recetteLightBox += `<div class="image-lightbox">`
+    recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
+    recetteLightBox += `  <div class="imagetitre">`
+    recetteLightBox += `    <div class="imagePrecSuiv">`
+    recetteLightBox += `      <button class="precedant" aria-label="Previous image" onclick="plusImages(-1)">&#10094;</button>`
+    recetteLightBox += `      <div class="RecetteDuPlat">`
+    recetteLightBox += `        <h2 class="titre-lightbox">${ElementsTrouvesSansDoublons[i].name}</h2>`
+    recetteLightBox += `        <h3 class="temps-lightbox"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
+    recetteLightBox += `        <h3 class="ListeDesIngredients">Liste des ingrédients :</h3>`
+    for (j= 0; j < ingredientRecette.length; j++) {
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
+        recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+      }
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
+        recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+      }
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
+        recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
+      }
+    }
+    recetteLightBox += `        <h3 class="appareils-lightbox">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
+    recetteLightBox += `        <h3 class="ustensiles-lightbox">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+    recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
+    recetteLightBox += `      </div>`
+    recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
+    recetteLightBox += `    </div>`
+    recetteLightBox += `  </div>`
+    recetteLightBox += `</div>`
+  }
+  // Injection du nouveau code html dans le DOM
+  let idRealisations = document.querySelector('#recettes_section');
+  idRealisations.innerHTML = listeRecette;
+
+  let contenuLightbox = document.querySelector("#contenu-lightbox");
+  contenuLightbox.innerHTML= recetteLightBox;
+}
+
+function clicBoutonFiltreIngredient(tableauRecettes = recipes) {
+  let boutonsFiltreIngredients = document.querySelectorAll(".bouton-ingredient-filtre");
+  boutonsFiltreIngredients.forEach((boutonFiltreIngredient) =>
+  boutonFiltreIngredient.addEventListener("click", () =>
+      {
+        console.log("boutonFiltreIngredient ça marche");
+      }
+    )
+  )
+};
