@@ -106,7 +106,12 @@ header {
 }
 #appareils {
     background-color: rgb(113, 197, 148);
-    margin-left: -20px;
+    /*margin-left: -20px;*/
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.appareils-recherche-angle-up-liste {
+    margin-left: 20px;
     margin-right: 20px;
 }
 #ustensiles {
@@ -196,7 +201,7 @@ header {
 .fa-angle-up:hover {
     cursor: pointer;
 }
-.bouton-ingredient-filtre, .bouton-ingredient-filtres {
+.bouton-ingredient-filtre, .bouton-ingredient-filtres, .bouton-appareil-filtre, .bouton-ustensil-filtre {
     background-color: rgb(0, 140, 255);
     color: white;
     font-family: Arial;
@@ -207,6 +212,12 @@ header {
     padding: 10px;
     margin-top: 20px;
     margin-right: 5px;
+}
+.bouton-appareil-filtre {
+    background-color: rgb(113, 197, 148);
+}
+.bouton-ustensile-filtre {
+    background-color: rgb(240, 105, 105);
 }
 .fa-circle-xmark {
     padding-left: 10px;
