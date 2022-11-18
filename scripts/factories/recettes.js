@@ -18,13 +18,13 @@ function recette() {
     let ingredientRecette = recipes[i].ingredients;
     for (j= 0; j < ingredientRecette.length; j++) {
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-        listeRecette += `    <h3 class="ingredientRecette"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette"> ${ingredientRecette[j].ingredient}</h3>`
+        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
       }
     }
 
@@ -56,8 +56,8 @@ function recette() {
         recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
       }
     }
-    recetteLightBox += `        <h3 class="appareils-lightbox">Appareils : ${recipes[i].appliance}</h3>`
-    recetteLightBox += `        <h3 class="ustensiles-lightbox">Ustensiles : ${recipes[i].ustensils}</h3>`
+    recetteLightBox += `        <h3 class="appareils-lightbox" name="${recipes[i].appliance}">Appareils : ${recipes[i].appliance}</h3>`
+    recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${recipes[i].ustensils}">Ustensiles : ${recipes[i].ustensils}</h3>`
     recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${recipes[i].description}</h3>`
     recetteLightBox += `      </div>`
     recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`

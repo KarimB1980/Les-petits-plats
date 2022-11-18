@@ -222,6 +222,9 @@ header {
 .fa-circle-xmark {
     padding-left: 10px;
 }
+.bouton-ingredient-filtre:hover {
+    cursor: pointer;
+}
 /*----------------------------------------------------------------------------------------------------------------------*/
 /* Cartes des recettes */
 #recettes_section {
