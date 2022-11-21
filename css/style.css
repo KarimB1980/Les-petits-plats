@@ -201,7 +201,7 @@ header {
 .fa-angle-up:hover {
     cursor: pointer;
 }
-.bouton-ingredient-filtre, .bouton-ingredient-filtres, .bouton-appareil-filtre, .bouton-ustensil-filtre {
+.bouton-ingredient-filtre, .bouton-ingredient-filtres, .bouton-appareil-filtre, .bouton-ustensile-filtre {
     background-color: rgb(0, 140, 255);
     color: white;
     font-family: Arial;
