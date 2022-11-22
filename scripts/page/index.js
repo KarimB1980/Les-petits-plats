@@ -1,5 +1,5 @@
 console.log(recipes);
-
+// FONCTIONS GENERALES //
 // Fonction d'initialisation de la page index.html
 function initialisation() {
   //Création de l'en-tête de la page index.html
@@ -235,8 +235,7 @@ function clickFaAngleUp() {
         document.querySelector("#menu > div.boutons-ustensiles-recherche-angle-up-liste > div > div.ustensiles-recherche-angle-up > button").style.display = "none";
         document.querySelector("#ustensiles").style.display = "block";
 
-        suppressionBoutonFiltreIngredient(tableauRecettes = recipes);
-
+        //suppressionBoutonFiltreIngredient(tableauRecettes = recipes);
       }
     )
   )
@@ -244,6 +243,7 @@ function clickFaAngleUp() {
 clickFaAngleUp();
 
 //-------------------------------------------------------------------------------------------------------------------------------------------//
+// FONCTIONS POUR LES INGREDIENTS //
 // Fonction pour la création de la liste des ingrédients
 function listeIngredients(tableauRecettes = recipes) { 
   let ingredients = document.querySelector("#ingredients");
@@ -257,24 +257,19 @@ function listeIngredients(tableauRecettes = recipes) {
       let IngredientsRecettes = document.querySelectorAll(".ingredientRecette");
       IngredientsRecettes.forEach((IngredientRecettes) =>
         {
-          //console.log("IngredientRecettes ça marche");
-          //console.log(IngredientRecettes.getAttribute("name"));
           listeIngredientsRecettes.push(IngredientRecettes.getAttribute("name"));          
         }
       )
-
       // Tri par ordre alphabétique des valeurs
       listeIngredientsRecettes.sort();
       // Supression des doublons du tableau "listeIngredientsRecettes"
       let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
-      //console.log(listeDesIngredients);
 
       for (let j = 0; j < listeDesIngredients.length; j++) {
         let tableauIngredientsFiltres = document.createElement("button");
         tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
         tableauIngredientsFiltres.setAttribute("name",listeDesIngredients[j]);
         document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
-
         tableauIngredientsFiltres.innerText = listeDesIngredients[j];
       }
 
@@ -282,20 +277,16 @@ function listeIngredients(tableauRecettes = recipes) {
       let boutonsIngredientsFiltres = document.querySelectorAll(".bouton-ingredient-filtre");
       boutonsIngredientsFiltres.forEach((boutonIngredientFiltre) =>
         {
-          //console.log(boutonIngredientFiltre.name);
           let boutonsIngredientsTableau = document.querySelectorAll(".tableau-ingredients-filtres");
           boutonsIngredientsTableau.forEach((boutonIngredientTableau) =>
             {
-              //console.log(boutonIngredientTableau.getAttribute("name"));
-                if (boutonIngredientTableau.name == boutonIngredientFiltre.name) {
-                //console.log(boutonIngredientTableau.name);
+              if (boutonIngredientTableau.name == boutonIngredientFiltre.name) {
                 boutonIngredientTableau.remove();
               }
             }
           )
         }
-      );
-
+      )
 
       document.querySelector("#ingredients-recherche").style.display = "block";
       document.querySelector(".tableau-des-ingredients").style.display = "block";
@@ -348,7 +339,7 @@ function clicBoutonlisteIngredients(tableauRecettes = recipes) {
         document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
         document.querySelector("#ingredients").style.display = "block";
 
-        // Suppressiion du bouton à supprimer et lancement de la fonction suppressionBoutonFiltreIngredient()
+        // Lancement de la fonction suppressionBoutonFiltreIngredient() et suppressiion du bouton à supprimer
         suppressionBoutonFiltreIngredient(tableauRecettes = recipes);
         boutonIngredientASupprimer.click();
       }
@@ -367,10 +358,7 @@ function saisieIngredient() {
       champDeRechercheIngredients.addEventListener("keyup", () =>
         {
           if (champDeRechercheIngredients.value.length >= 3) {
-            //document.querySelector(".tableau-des-ingredients").innerHTML = "";
-            //console.log("champDeRechercheIngredients ça marche");
             listeTableauIngredients.push(clicBoutonIngredient.name);
-            //console.log("3 caractères minimum ça marche");
             document.querySelector(".tableau-des-ingredients").innerHTML = "";
             let ingredientsTrouves = [];
 
@@ -384,8 +372,6 @@ function saisieIngredient() {
             // Supression des doublons du tableau "ingredientsTrouves"
             ingredientsTrouves = [...new Set(ingredientsTrouves)];
 
-            //console.log(ingredientsTrouves);
-
             for (let j = 0; j < ingredientsTrouves.length; j++) {
               let tableauIngredientsFiltres = document.createElement("button");
               tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
@@ -394,7 +380,6 @@ function saisieIngredient() {
               document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
               tableauIngredientsFiltres.innerText = ingredientsTrouves[j];
             }
-            //console.log(listeTableauIngredients);
           } 
           else 
           {
@@ -404,8 +389,6 @@ function saisieIngredient() {
             let IngredientsRecettes = document.querySelectorAll(".ingredientRecette");
             IngredientsRecettes.forEach((IngredientRecettes) =>
               {
-                //console.log("IngredientRecettes ça marche");
-                //console.log(IngredientRecettes.getAttribute("name"));
                 listeIngredientsRecettes.push(IngredientRecettes.getAttribute("name"));          
               }
             )
@@ -414,7 +397,6 @@ function saisieIngredient() {
             listeIngredientsRecettes.sort();
             // Supression des doublons du tableau "listeIngredientsRecettes"
             let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
-            //console.log(listeDesIngredients);
 
             for (let j = 0; j < listeDesIngredients.length; j++) {
               let tableauIngredientsFiltres = document.createElement("button");
@@ -424,18 +406,14 @@ function saisieIngredient() {
 
               tableauIngredientsFiltres.innerText = listeDesIngredients[j];
             }
-
             // Supression des boutons du tableau des ingrédients déjà sélectionnés
             let boutonsIngredientsFiltres = document.querySelectorAll(".bouton-ingredient-filtre");
             boutonsIngredientsFiltres.forEach((boutonIngredientFiltre) =>
               {
-                //console.log(boutonIngredientFiltre.name);
                 let boutonsIngredientsTableau = document.querySelectorAll(".tableau-ingredients-filtres");
                 boutonsIngredientsTableau.forEach((boutonIngredientTableau) =>
                   {
-                    //console.log(boutonIngredientTableau.getAttribute("name"));
                       if (boutonIngredientTableau.name == boutonIngredientFiltre.name) {
-                      //console.log(boutonIngredientTableau.name);
                       boutonIngredientTableau.remove();
                     }
                   }
@@ -467,8 +445,6 @@ function listeDesRecettesIngredients(tableauRecettes = recipes) {
     }
   )
   let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
-  //console.log(ElementsTrouvesSansDoublons);
-
   let listeRecette = '';
   let recetteLightBox = '';
 
@@ -541,7 +517,6 @@ function listeDesRecettesIngredients(tableauRecettes = recipes) {
 
   let contenuLightbox = document.querySelector("#contenu-lightbox");
   contenuLightbox.innerHTML= recetteLightBox;
-
 }
 
 // fonction de suppression d'un ingrédient sélectionné
@@ -559,7 +534,7 @@ function suppressionBoutonFiltreIngredient(tableauRecettes = recipes) {
         let listeIngredientsRecettes = [];
         for (let i = 0; i < tableauRecettes.length; i++) {
           let ingredientRecette = tableauRecettes[i].ingredients;
-          for (j= 0; j < ingredientRecette.length; j++) {
+          for (let j= 0; j < ingredientRecette.length; j++) {
             listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
           }
         }
@@ -567,7 +542,6 @@ function suppressionBoutonFiltreIngredient(tableauRecettes = recipes) {
         listeIngredientsRecettes.sort();
         // Supression des doublons du tableau "listeIngredientsRecettes"
         let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
-        console.log(listeDesIngredients);
         // Création de l'affichage de la liste des ingrédients
         for (let l = 0; l <listeDesIngredients.length; l++) {
           let tableauIngredientsFiltres = document.createElement("button");
@@ -576,7 +550,7 @@ function suppressionBoutonFiltreIngredient(tableauRecettes = recipes) {
           document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
           tableauIngredientsFiltres.innerText = listeDesIngredients[l];
         }
-        //tableauRecettes = recipes;
+        tableauRecettes = recipes;
 
 
 
@@ -592,29 +566,23 @@ function suppressionBoutonFiltreIngredient(tableauRecettes = recipes) {
             let BoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
             BoutonIngredients.forEach((BoutonIngredient) =>
               {
-                //console.log("BoutonIngredients ça marche");
                 // Si le nom de l'ingrédient dans le tableau des ingrédients est égal à celui du nom du bouton ingrédient filtré restant alors on injecte cet ingrédient dans "elementsTrouves"
                 if(BoutonIngredient.name == boutonIngredient.name) {
-                  //console.log("clicBoutonIngredient.name == boutonIngredient.name ça marche");  
-                  //console.log(tableauRecettes.length, ": tableauRecettes.length");
                   document.querySelector("#ingredients-recherche").value = boutonIngredient.name;
                   let elementsTrouves = [];
                   let champDeRecherche = document.querySelector("#ingredients-recherche");
                   for(let i = 0; i < tableauRecettes.length; i++) {
-                    let champDeRechercheEnMinuscules = champDeRecherche.value.toLowerCase();
                     // Recherche de la valeur dans les ingrédients de la recette
                     let ingredientRecette = tableauRecettes[i].ingredients;
                     //console.log(ingredientRecette);
-                    for (j= 0; j < ingredientRecette.length; j++) {
-                      let NomIngredientRecetteActuelleEnMinuscules = ingredientRecette[j].ingredient.toLowerCase();
-                      let resultatIngredients = NomIngredientRecetteActuelleEnMinuscules.includes(champDeRechercheEnMinuscules);
+                    for (let j= 0; j < ingredientRecette.length; j++) {
+                      let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                       // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
-                      if (resultatIngredients==true) {
+                      if (NomIngredientRecetteActuelle == champDeRecherche.value) {
                         elementsTrouves.push(tableauRecettes[i]);
                       }
                     }
                   }
-                  //console.log(elementsTrouves);
                   // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                   listeDesRecettesIngredients(tableauRecettes = elementsTrouves);
 
@@ -633,8 +601,10 @@ function suppressionBoutonFiltreIngredient(tableauRecettes = recipes) {
       }
     )
   )
-};
+}
+
 //-------------------------------------------------------------------------------------------------------------------------------------------//
+// FONCTIONS POUR LES APPAREILS //
 // Fonction pour la création de la liste des appareils
 function listeAppareils(tableauRecettes = recipes) { 
   let appareils = document.querySelector("#appareils");
@@ -649,8 +619,6 @@ function listeAppareils(tableauRecettes = recipes) {
       //console.log(AppareilsRecettes);
       AppareilsRecettes.forEach((AppareilRecettes) =>
         {
-          //console.log("AppareilRecettes ça marche");
-          //console.log(AppareilRecettes.getAttribute("name"));
           listeAppareilsRecettes.push(AppareilRecettes.getAttribute("name"));
         }
       )
@@ -659,14 +627,12 @@ function listeAppareils(tableauRecettes = recipes) {
       listeAppareilsRecettes.sort();
       // Supression des doublons du tableau "listeAppareilsRecettes"
       let listeDesAppareils = [...new Set(listeAppareilsRecettes)];
-      //console.log(listeDesAppareils);
 
       for (let j = 0; j < listeDesAppareils.length; j++) {
         let tableauAppareilsFiltres = document.createElement("button");
         tableauAppareilsFiltres.setAttribute("class", "tableau-appareils-filtres");
         tableauAppareilsFiltres.setAttribute("name",listeDesAppareils[j]);
         document.querySelector(".tableau-des-appareils").appendChild(tableauAppareilsFiltres);
-
         tableauAppareilsFiltres.innerText = listeDesAppareils[j];
       }
 
@@ -674,13 +640,10 @@ function listeAppareils(tableauRecettes = recipes) {
       let boutonsAppareilsFiltres = document.querySelectorAll(".bouton-appareil-filtre");
       boutonsAppareilsFiltres.forEach((boutonAppareilFiltre) =>
         {
-          //console.log(boutonAppareilFiltre.name);
           let boutonsAppareilsTableau = document.querySelectorAll(".tableau-appareils-filtres");
           boutonsAppareilsTableau.forEach((boutonAppareilTableau) =>
             {
-              //console.log(boutonAppareilTableau.getAttribute("name"));
                 if (boutonAppareilTableau.name == boutonAppareilFiltre.name) {
-                //console.log(boutonAppareilTableau.name);
                 boutonAppareilTableau.remove();
               }
             }
@@ -759,10 +722,7 @@ function saisieAppareil() {
       champDeRechercheAppareils.addEventListener("keyup", () =>
         {
           if (champDeRechercheAppareils.value.length >= 3) {
-            //document.querySelector(".tableau-des-appareils").innerHTML = "";
-            //console.log("champDeRechercheAppareils ça marche");
             listeTableauAppareils.push(clicBoutonAppareil.name);
-            //console.log("3 caractères minimum ça marche");
             document.querySelector(".tableau-des-appareils").innerHTML = "";
             let appareilsTrouves = [];
 
@@ -776,8 +736,6 @@ function saisieAppareil() {
             // Supression des doublons du tableau "appareilsTrouves"
             appareilsTrouves = [...new Set(appareilsTrouves)];
 
-            //console.log(appareilsTrouves);
-
             for (let j = 0; j < appareilsTrouves.length; j++) {
               let tableauAppareilsFiltres = document.createElement("button");
               tableauAppareilsFiltres.setAttribute("class", "tableau-appareils-filtres");
@@ -786,7 +744,6 @@ function saisieAppareil() {
               document.querySelector(".tableau-des-appareils").appendChild(tableauAppareilsFiltres);
               tableauAppareilsFiltres.innerText = appareilsTrouves[j];
             }
-            //console.log(listeTableauAppareils);
           } 
           else 
           {
@@ -796,8 +753,6 @@ function saisieAppareil() {
             let AppareilsRecettes = document.querySelectorAll(".appareilRecette");
             AppareilsRecettes.forEach((AppareilRecettes) =>
               {
-                //console.log("AppareilRecettes ça marche");
-                //console.log(AppareilRecettes.getAttribute("name"));
                 listeAppareilsRecettes.push(AppareilRecettes.getAttribute("name"));          
               }
             )
@@ -806,7 +761,6 @@ function saisieAppareil() {
             listeAppareilsRecettes.sort();
             // Supression des doublons du tableau "listeAppareilsRecettes"
             let listeDesAppareils = [...new Set(listeAppareilsRecettes)];
-            //console.log(listeDesAppareils);
 
             for (let j = 0; j < listeDesAppareils.length; j++) {
               let tableauAppareilsFiltres = document.createElement("button");
@@ -825,9 +779,7 @@ function saisieAppareil() {
                 let boutonsAppareilsTableau = document.querySelectorAll(".tableau-appareils-filtres");
                 boutonsAppareilsTableau.forEach((boutonAppareilTableau) =>
                   {
-                    //console.log(boutonAppareilTableau.getAttribute("name"));
                       if (boutonAppareilTableau.name == boutonAppareilFiltre.name) {
-                      //console.log(boutonAppareilTableau.name);
                       boutonAppareilTableau.remove();
                     }
                   }
@@ -952,14 +904,12 @@ function suppressionBoutonFiltreAppareil(tableauRecettes = recipes) {
           let appareilRecette = tableauRecettes[i].appliance;
           //for (j= 0; j < appareilRecette.length; j++) {
             listeAppareilsRecettes.push(appareilRecette);
-            //console.log(listeAppareilsRecettes);
           //}
         }
         // Tri par ordre alphabétique des appareils
         listeAppareilsRecettes.sort();
         // Supression des doublons du tableau "listeAppareilsRecettes"
         let listeDesAppareils = [...new Set(listeAppareilsRecettes)];
-        //console.log(listeDesAppareils);
         // Création de l'affichage de la liste des appareils
         for (let l = 0; l <listeDesAppareils.length; l++) {
           let tableauAppareilsFiltres = document.createElement("button");
@@ -984,29 +934,19 @@ function suppressionBoutonFiltreAppareil(tableauRecettes = recipes) {
             let BoutonAppareils = document.querySelectorAll(".tableau-appareils-filtres");
             BoutonAppareils.forEach((BoutonAppareil) =>
               {
-                //console.log("BoutonAppareils ça marche");
                 // Si le nom de l'appareil dans le tableau des appareils est égal à celui du nom du bouton appareil filtré restant alors on injecte cet appareil dans "elementsTrouves"
                 if(BoutonAppareil.name == boutonAppareil.name) {
-                  //console.log("clicBoutonAppareil.name == boutonAppareil.name ça marche");  
-                  //console.log(tableauRecettes.length, ": tableauRecettes.length");
                   document.querySelector("#appareils-recherche").value = boutonAppareil.name;
                   let elementsTrouves = [];
                   let champDeRecherche = document.querySelector("#appareils-recherche");
                   for(let i = 0; i < tableauRecettes.length; i++) {
-                    let champDeRechercheEnMinuscules = champDeRecherche.value.toLowerCase();
                     // Recherche de la valeur dans les appareils de la recette
                     let appareilRecette = tableauRecettes[i].appliance;
-                    //console.log(appareilRecette);
-                    //for (j= 0; j < appareilRecette.length; j++) {
-                      let NomAppareilRecetteActuelleEnMinuscules = appareilRecette.toLowerCase();
-                      let resultatAppareils = NomAppareilRecetteActuelleEnMinuscules.includes(champDeRechercheEnMinuscules);
-                      // Injection des recettes contenant l'appareil sélectionné dans le tableau "elementsTrouves"
-                      if (resultatAppareils==true) {
-                        elementsTrouves.push(tableauRecettes[i]);
-                      }
-                    //}
+                    // Injection des recettes contenant l'appareil sélectionné dans le tableau "elementsTrouves"
+                    if (appareilRecette == champDeRecherche.value) {
+                      elementsTrouves.push(tableauRecettes[i]);
+                    }
                   }
-                  //console.log(elementsTrouves);
                   // Appel de la fonction listeDesRecettesAppareils() pour l'affichage des recettes restantes
                   listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
 
@@ -1025,9 +965,10 @@ function suppressionBoutonFiltreAppareil(tableauRecettes = recipes) {
       }
     )
   )
-};
+}
 
 //-------------------------------------------------------------------------------------------------------------------------------------------//
+// FONCTIONS POUR LES USTENSILES //
 // Fonction pour la création de la liste des ustensiles
 function listeUstensiles(tableauRecettes = recipes) { 
   let ustensiles = document.querySelector("#ustensiles");
@@ -1174,14 +1115,11 @@ function saisieUstensile() {
       champDeRechercheUstensiles.addEventListener("keyup", () =>
         {
           if (champDeRechercheUstensiles.value.length >= 3) {
-            //document.querySelector(".tableau-des-ustensiles").innerHTML = "";
-            //console.log("champDeRechercheUstensiles ça marche");
             listeTableauUstensiles.push(clicBoutonUstensile.name);
-            //console.log("3 caractères minimum ça marche");
             document.querySelector(".tableau-des-ustensiles").innerHTML = "";
             let ustensilesTrouves = [];
 
-            for(let i = 0; i < listeTableauUstensiles.length; i++) {
+            for (let i = 0; i < listeTableauUstensiles.length; i++) {
               let champDeRechercheEnMinuscules = champDeRechercheUstensiles.value.toLowerCase();
               let resultatUstensiles = listeTableauUstensiles[i].toLowerCase().includes(champDeRechercheEnMinuscules);
               if (resultatUstensiles==true) {
@@ -1191,20 +1129,14 @@ function saisieUstensile() {
             // Supression des doublons du tableau "ustensilesTrouves"
             ustensilesTrouves = [...new Set(ustensilesTrouves)];
 
-            //console.log(ustensilesTrouves);
-
             for (let j = 0; j < ustensilesTrouves.length; j++) {
               let tableauUstensilesFiltres = document.createElement("button");
               tableauUstensilesFiltres.setAttribute("class", "tableau-ustensiles-filtres");
               tableauUstensilesFiltres.setAttribute("name", ustensilesTrouves[j]);
-
               document.querySelector(".tableau-des-ustensiles").appendChild(tableauUstensilesFiltres);
               tableauUstensilesFiltres.innerText = ustensilesTrouves[j];
             }
-            //console.log(listeTableauUstensiles);
-          } 
-          else 
-          {
+          } else {
             document.querySelector(".tableau-des-ustensiles").innerHTML = "";
             // Création de la liste ustensiles
             let listeUstensilesRecettes = [];
@@ -1216,7 +1148,6 @@ function saisieUstensile() {
               }
             )
 
-            console.log(listeUstensilesRecettes);
             for (let k = 0; listeUstensilesRecettes.length; k++) {
               let y = listeUstensilesRecettes[k];
               console.log(y);
@@ -1241,7 +1172,6 @@ function saisieUstensile() {
               tableauUstensilesFiltres.setAttribute("class", "tableau-ustensiles-filtres");
               tableauUstensilesFiltres.setAttribute("name",listeDesUstensiles[j]);
               document.querySelector(".tableau-des-ustensiles").appendChild(tableauUstensilesFiltres);
-
               tableauUstensilesFiltres.innerText = listeDesUstensiles[j];
             }
 
@@ -1249,13 +1179,10 @@ function saisieUstensile() {
             let boutonsUstensilesFiltres = document.querySelectorAll(".bouton-ustensile-filtre");
             boutonsUstensilesFiltres.forEach((boutonUstensileFiltre) =>
               {
-                //console.log(boutonUstensileFiltre.name);
                 let boutonsUstensilesTableau = document.querySelectorAll(".tableau-ustensiles-filtres");
                 boutonsUstensilesTableau.forEach((boutonUstensileTableau) =>
                   {
-                    //console.log(boutonUstensileTableau.getAttribute("name"));
                       if (boutonUstensileTableau.name == boutonUstensileFiltre.name) {
-                      //console.log(boutonUstensileTableau.name);
                       boutonUstensileTableau.remove();
                     }
                   }
@@ -1287,76 +1214,70 @@ function listeDesRecettesUstensiles(tableauRecettes = recipes) {
     }
   )
   let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
-  //console.log(ElementsTrouvesSansDoublons);
-
   let listeRecette = '';
   let recetteLightBox = '';
 
   for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
+    // Affichage des recettes et création du contenu de la lightbox
+    listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
+    listeRecette += `    <div class="vide"></div>`
+    listeRecette += `    <div class="nomTempsIngredientsRecette">`
+    listeRecette += `      <div class="nomTemps">`
+    listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+    listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
+    listeRecette += `      </div>`
+    listeRecette += `      <div class="ingredientsDescription">`
+    listeRecette += `        <div class="Ingredients">`
 
-    for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
-
-      // Affichage des recettes et création du contenu de la lightbox
-      listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-      listeRecette += `    <div class="vide"></div>`
-      listeRecette += `    <div class="nomTempsIngredientsRecette">`
-      listeRecette += `      <div class="nomTemps">`
-      listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
-      listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
-      listeRecette += `      </div>`
-      listeRecette += `      <div class="ingredientsDescription">`
-      listeRecette += `        <div class="Ingredients">`
-  
-      let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
-      for (j= 0; j < ingredientRecette.length; j++) {
-        if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-          listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
-        }
-        if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-          listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
-        }
-        if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-          listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
-        }
+    let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
+    for (j= 0; j < ingredientRecette.length; j++) {
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
+        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
       }
-  
-      listeRecette += `        </div>`
-      listeRecette += `        <div class="descriptionContenant">`
-      listeRecette += `          <h3 class="description">${ElementsTrouvesSansDoublons[i].description}</h3>`
-      listeRecette += `        </div>`
-      listeRecette += `      </div>`
-      listeRecette += `    </div>`
-      listeRecette += `  </button>`
-  
-      recetteLightBox += `<div class="image-lightbox">`
-      recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
-      recetteLightBox += `  <div class="imagetitre">`
-      recetteLightBox += `    <div class="imagePrecSuiv">`
-      recetteLightBox += `      <button class="precedant" aria-label="Previous image" onclick="plusImages(-1)">&#10094;</button>`
-      recetteLightBox += `      <div class="RecetteDuPlat">`
-      recetteLightBox += `        <h2 class="titre-lightbox">${ElementsTrouvesSansDoublons[i].name}</h2>`
-      recetteLightBox += `        <h3 class="temps-lightbox"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
-      recetteLightBox += `        <h3 class="ListeDesIngredients">Liste des ingrédients :</h3>`
-      for (j= 0; j < ingredientRecette.length; j++) {
-        if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-          recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
-        }
-        if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-          recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
-        }
-        if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-          recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
-        }
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
+        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
       }
-      recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-      recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
-      recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
-      recetteLightBox += `      </div>`
-      recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
-      recetteLightBox += `    </div>`
-      recetteLightBox += `  </div>`
-      recetteLightBox += `</div>`
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
+        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+      }
     }
+
+    listeRecette += `        </div>`
+    listeRecette += `        <div class="descriptionContenant">`
+    listeRecette += `          <h3 class="description">${ElementsTrouvesSansDoublons[i].description}</h3>`
+    listeRecette += `        </div>`
+    listeRecette += `      </div>`
+    listeRecette += `    </div>`
+    listeRecette += `  </button>`
+
+    recetteLightBox += `<div class="image-lightbox">`
+    recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
+    recetteLightBox += `  <div class="imagetitre">`
+    recetteLightBox += `    <div class="imagePrecSuiv">`
+    recetteLightBox += `      <button class="precedant" aria-label="Previous image" onclick="plusImages(-1)">&#10094;</button>`
+    recetteLightBox += `      <div class="RecetteDuPlat">`
+    recetteLightBox += `        <h2 class="titre-lightbox">${ElementsTrouvesSansDoublons[i].name}</h2>`
+    recetteLightBox += `        <h3 class="temps-lightbox"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
+    recetteLightBox += `        <h3 class="ListeDesIngredients">Liste des ingrédients :</h3>`
+    for (j= 0; j < ingredientRecette.length; j++) {
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
+        recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+      }
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
+        recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+      }
+      if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
+        recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
+      }
+    }
+    recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
+    recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+    recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
+    recetteLightBox += `      </div>`
+    recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
+    recetteLightBox += `    </div>`
+    recetteLightBox += `  </div>`
+    recetteLightBox += `</div>`
   }
   // Injection du nouveau code html dans le DOM
   let idRealisations = document.querySelector('#recettes_section');
@@ -1401,8 +1322,6 @@ function suppressionBoutonFiltreUstensile(tableauRecettes = recipes) {
         }
         tableauRecettes = recipes;
 
-
-
         // Si tous les ustensiles ont été supprimés, alors affichage de toutes les recettes
         if (document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
           recette();
@@ -1415,29 +1334,25 @@ function suppressionBoutonFiltreUstensile(tableauRecettes = recipes) {
             let BoutonUstensiles = document.querySelectorAll(".tableau-ustensiles-filtres");
             BoutonUstensiles.forEach((BoutonUstensile) =>
               {
-                //console.log("BoutonUstensiles ça marche");
                 // Si le nom de l'ustensile dans le tableau des ustensiles est égal à celui du nom du bouton ustensile filtré restant alors on injecte cet ustensile dans "elementsTrouves"
                 if(BoutonUstensile.name == boutonUstensile.name) {
-                  //console.log("clicBoutonUstensile.name == boutonUstensile.name ça marche");  
-                  //console.log(tableauRecettes.length, ": tableauRecettes.length");
                   document.querySelector("#ustensiles-recherche").value = boutonUstensile.name;
                   let elementsTrouves = [];
                   let champDeRecherche = document.querySelector("#ustensiles-recherche");
                   for(let i = 0; i < tableauRecettes.length; i++) {
-                    let champDeRechercheEnMinuscules = champDeRecherche.value.toLowerCase();
                     // Recherche de la valeur dans les ustensiles de la recette
                     let ustensileRecette = tableauRecettes[i].ustensils;
-                    //console.log(ustensileRecette);
                     for (j= 0; j < ustensileRecette.length; j++) {
-                      let NomUstensileRecetteActuelleEnMinuscules = ustensileRecette[j].toLowerCase();
-                      let resultatUstensiles = NomUstensileRecetteActuelleEnMinuscules.includes(champDeRechercheEnMinuscules);
+                      let NomUstensileRecetteActuelle = ustensileRecette[j];
                       // Injection des recettes contenant l'ustensile sélectionné dans le tableau "elementsTrouves"
-                      if (resultatUstensiles==true) {
+                      if (NomUstensileRecetteActuelle == champDeRecherche.value) {
                         elementsTrouves.push(tableauRecettes[i]);
                       }
                     }
                   }
-                  //console.log(elementsTrouves);
+                  console.log(elementsTrouves);
+                  //elementsTrouves = [...new Set(elementsTrouves)];
+
                   // Appel de la fonction listeDesRecettesUstensiles() pour l'affichage des recettes restantes
                   listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
 
@@ -1456,5 +1371,5 @@ function suppressionBoutonFiltreUstensile(tableauRecettes = recipes) {
       }
     )
   )
-};
+}
 //-------------------------------------------------------------------------------------------------------------------------------------------//
