@@ -176,8 +176,8 @@ function barreDeRecherche() {
               recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
             }
           }
-          recetteLightBox += `        <h3 class="appareils-lightbox">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-          recetteLightBox += `        <h3 class="ustensiles-lightbox">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+          recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
+          recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
           recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
           recetteLightBox += `      </div>`
           recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -192,9 +192,15 @@ function barreDeRecherche() {
         let contenuLightbox = document.querySelector("#contenu-lightbox");
         contenuLightbox.innerHTML= recetteLightBox;
 
-        listeIngredients(tableauRecettes = ElementsTrouvesSansDoublons);
+
+        /*listeIngredients(tableauRecettes = ElementsTrouvesSansDoublons);
         listeAppareils(tableauRecettes = ElementsTrouvesSansDoublons);
         listeUstensiles(tableauRecettes = ElementsTrouvesSansDoublons);
+
+        clicBoutonlisteIngredients(tableauRecettes = ElementsTrouvesSansDoublons);
+        clicBoutonlisteAppareils(tableauRecettes = ElementsTrouvesSansDoublons);
+        clicBoutonlisteUstensiles(tableauRecettes = ElementsTrouvesSansDoublons);*/
+
       } else {
         recette();
         listeIngredients();
@@ -320,21 +326,11 @@ function clicBoutonlisteIngredients(tableauRecettes = recipes) {
         boutonIngredientFiltre.textContent = document.querySelector("#ingredients-recherche").value, croixIngredientFiltre;
         document.querySelector(".bouton-ingredient-filtre").appendChild(croixIngredientFiltre);
 
-        // Création d'un bouton à supprimer pour le lancement de la fonction suppressionBoutonFiltreIngredient()
-        /*let boutonIngredientASupprimer = document.createElement("button");
-        boutonIngredientASupprimer.setAttribute("class", "bouton-ingredient-filtre");
-        document.querySelector(".buttonsIngredientsRecherches").prepend(boutonIngredientASupprimer);*/
-
         // Masquage de la liste des ingrédients
         document.querySelector("#ingredients-recherche").style.display = "none";
         document.querySelector(".tableau-des-ingredients").style.display = "none";
         document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
         document.querySelector("#ingredients").style.display = "block";
-
-        // Lancement de la fonction suppressionBoutonFiltreIngredient() et suppressiion du bouton à supprimer
-        /*suppressionBoutonFiltreIngredient(tableauRecettes = recipes);
-        boutonIngredientASupprimer.click();*/
-
 
         //------------------------------------------------------------------------------------------------------------------------------------------//
         // Création du tableau de la liste des ingrédients
@@ -799,6 +795,7 @@ function listeAppareils(tableauRecettes = recipes) {
           listeAppareilsRecettes.push(AppareilRecettes.getAttribute("name"));
         }
       )
+      console.log(listeAppareilsRecettes);
 
       // Tri par ordre alphabétique des valeurs
       listeAppareilsRecettes.sort();
