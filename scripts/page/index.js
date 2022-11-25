@@ -397,8 +397,7 @@ function Recherche() {
 
         // Fonction de création des boutons d'ingrédients sélectionnés et création d'un tableau des recettes restantes
         //function clicBoutonlisteIngredients(tableauRecettes = recipes) {
-          function clicBoutonlisteIngredients(tableauRecettes = ElementsTrouvesSansDoublons) {
-          console.log(tableauRecettes);
+        function clicBoutonlisteIngredients(tableauRecettes = ElementsTrouvesSansDoublons) {
 
           let clicBoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
           clicBoutonIngredients.forEach((clicBoutonIngredient) =>
@@ -464,7 +463,6 @@ function Recherche() {
                   )
                   tableauRecettes = elementsTrouves;
                 }
-                console.log(tableauRecettes);
 
                 // Si tous les ingrédients ont été supprimés, alors affichage de toutes les recettes
                 if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0) {
@@ -486,7 +484,6 @@ function Recherche() {
                           for(let i = 0; i < tableauRecettes.length; i++) {
                             // Recherche de la valeur dans les ingrédients de la recette
                             let ingredientRecette = tableauRecettes[i].ingredients;
-                            //console.log(ingredientRecette);
                             for (let j= 0; j < ingredientRecette.length; j++) {
                               let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                               // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -692,7 +689,6 @@ function Recherche() {
         // fonction de suppression d'un ingrédient sélectionné
         function suppressionBoutonFiltreIngredient(tableauRecettes = ElementsTrouvesSansDoublons) {
           let boutonsFiltreIngredients = document.querySelectorAll(".bouton-ingredient-filtre");
-          /*console.log(boutonsFiltreIngredients);*/
           boutonsFiltreIngredients.forEach((boutonFiltreIngredient) =>
             boutonFiltreIngredient.addEventListener("click", () =>
               {
@@ -716,7 +712,6 @@ function Recherche() {
                     listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
                   }
                 }
-                //console.log(listeIngredientsRecettes);
                 // Tri par ordre alphabétique des ingrédients
                 listeIngredientsRecettes.sort();
                 // Supression des doublons du tableau "listeIngredientsRecettes"
@@ -730,11 +725,7 @@ function Recherche() {
                   tableauIngredientsFiltres.innerText = listeDesIngredients[l];
                 }
 
-                console.log(tableauRecettes);
-
                 tableauRecettes = ElementsTrouvesSansDoublons;
-                console.log(tableauRecettes);
-
 
                 // Si tous les ingrédients, appareils et ustensiles ont été supprimés, alors affichage de toutes les recettes
                 if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0 && document.querySelector(".buttonsAppareilsRecherches").children.length == 0 && document.querySelector(".buttonsUstensilesRecherches").children.length == 0 && document.querySelector("#barre-de-recherche").value == "") {
@@ -759,7 +750,6 @@ function Recherche() {
                       let BoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
                       BoutonIngredients.forEach((BoutonIngredient) =>
                         {
-                          console.log(BoutonIngredient);
                           // Si le nom de l'ingrédient dans le tableau des ingrédients est égal à celui du nom du bouton ingrédient filtré restant alors on injecte cet ingrédient dans "elementsTrouves"
                           if(BoutonIngredient.name == boutonIngredient.name) {
                             document.querySelector("#ingredients-recherche").value = boutonIngredient.name;
@@ -768,7 +758,6 @@ function Recherche() {
                             for(let i = 0; i < tableauRecettes.length; i++) {
                               // Recherche de la valeur dans les ingrédients de la recette
                               let ingredientRecette = tableauRecettes[i].ingredients;
-                              //console.log(ingredientRecette);
                               for (let j= 0; j < ingredientRecette.length; j++) {
                                 let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                                 // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -777,7 +766,6 @@ function Recherche() {
                                 }
                               }
                             }
-                            console.log(elementsTrouves);
                             // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                             listeDesRecettesIngredients(tableauRecettes = elementsTrouves);
 
@@ -818,7 +806,6 @@ function Recherche() {
                               }
                             }
 
-                            console.log(elementsTrouves);
                             //elementsTrouves = [...new Set(elementsTrouves)];
 
                             // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
@@ -863,7 +850,6 @@ function Recherche() {
                                 }
                               }
                             }
-                            console.log(elementsTrouves);
                             //elementsTrouves = [...new Set(elementsTrouves)];
 
                             // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
@@ -901,13 +887,11 @@ function Recherche() {
               // Création de la liste appareils
               let listeAppareilsRecettes = [];
               let AppareilsRecettes = document.querySelectorAll(".appareils-lightbox");
-              //console.log(AppareilsRecettes);
               AppareilsRecettes.forEach((AppareilRecettes) =>
                 {
                   listeAppareilsRecettes.push(AppareilRecettes.getAttribute("name"));
                 }
               )
-              console.log(listeAppareilsRecettes);
 
               // Tri par ordre alphabétique des valeurs
               listeAppareilsRecettes.sort();
@@ -1025,7 +1009,6 @@ function Recherche() {
                   )
                   tableauRecettes = elementsTrouves;
                 }
-                console.log(tableauRecettes);
 
                 // Si tous les appareils ont été supprimés, alors affichage de toutes les recettes
                 if (document.querySelector(".buttonsAppareilsRecherches").children.length == 0) {
@@ -1137,7 +1120,6 @@ function Recherche() {
                     let boutonsAppareilsFiltres = document.querySelectorAll(".bouton-appareil-filtre");
                     boutonsAppareilsFiltres.forEach((boutonAppareilFiltre) =>
                       {
-                        //console.log(boutonAppareilFiltre.name);
                         let boutonsAppareilsTableau = document.querySelectorAll(".tableau-appareils-filtres");
                         boutonsAppareilsTableau.forEach((boutonAppareilTableau) =>
                           {
@@ -1173,7 +1155,6 @@ function Recherche() {
             }
           )
           let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
-          //console.log(ElementsTrouvesSansDoublons);
 
           let listeRecette = '';
           let recetteLightBox = '';
@@ -1288,8 +1269,6 @@ function Recherche() {
                   tableauAppareilsFiltres.innerText = listeDesAppareils[l];
                 }
 
-                console.log(tableauRecettes);
-
                 tableauRecettes = ElementsTrouvesSansDoublons;
 
                 // Si tous les ingrédients, appareils et ustensiles ont été supprimés, alors affichage de toutes les recettes
@@ -1324,7 +1303,6 @@ function Recherche() {
                             for(let i = 0; i < tableauRecettes.length; i++) {
                               // Recherche de la valeur dans les ingrédients de la recette
                               let ingredientRecette = tableauRecettes[i].ingredients;
-                              //console.log(ingredientRecette);
                               for (let j= 0; j < ingredientRecette.length; j++) {
                                 let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                                 // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -1373,9 +1351,6 @@ function Recherche() {
                               }
                             }
 
-                            console.log(elementsTrouves);
-                            //elementsTrouves = [...new Set(elementsTrouves)];
-
                             // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                             listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
 
@@ -1418,8 +1393,6 @@ function Recherche() {
                                 }
                               }
                             }
-                            console.log(elementsTrouves);
-                            //elementsTrouves = [...new Set(elementsTrouves)];
 
                             // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                             listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
@@ -1459,20 +1432,15 @@ function Recherche() {
               let UstensilesRecettes = document.querySelectorAll(".ustensiles-lightbox");
               UstensilesRecettes.forEach((UstensileRecettes) =>
                 {
-                  //console.log("UstensileRecettes ça marche");
-                  //console.log(UstensileRecettes.getAttribute("name"));
                   listeUstensilesRecettes1.push(UstensileRecettes.getAttribute("name").split(','));
-                  //console.log(listeUstensilesRecettes);
                 }
               )
 
               let listeUstensilesRecettes = []
               let listeUstensilesRecettes2 = "";
 
-              console.log(listeUstensilesRecettes1);
               for (let k = 0; listeUstensilesRecettes1.length; k++) {
                 let y = listeUstensilesRecettes1[k];
-                //console.log(y);
 
                 if (y != undefined) {
                   for(let i = 0; i < y.length; i++) {
@@ -1484,14 +1452,12 @@ function Recherche() {
                 listeUstensilesRecettes2 = [...new Set(listeUstensilesRecettes)];
                 listeUstensilesRecettes2.sort();
 
-                //console.log(listeUstensilesRecettes2);
               }
 
               // Tri par ordre alphabétique des valeurs
               listeUstensilesRecettes2.sort();
               // Supression des doublons du tableau "listeUstensilesRecettes"
               let listeDesUstensiles = [...new Set(listeUstensilesRecettes2)];
-              //console.log(listeDesUstensiles);
 
 
               for (let j = 0; j < listeDesUstensiles.length; j++) {
@@ -1507,13 +1473,10 @@ function Recherche() {
               let boutonsUstensilesFiltres = document.querySelectorAll(".bouton-ustensile-filtre");
               boutonsUstensilesFiltres.forEach((boutonUstensileFiltre) =>
                 {
-                  //console.log(boutonUstensileFiltre.name);
                   let boutonsUstensilesTableau = document.querySelectorAll(".tableau-ustensiles-filtres");
                   boutonsUstensilesTableau.forEach((boutonUstensileTableau) =>
                     {
-                      //console.log(boutonUstensileTableau.getAttribute("name"));
                         if (boutonUstensileTableau.name == boutonUstensileFiltre.name) {
-                        //console.log(boutonUstensileTableau.name);
                         boutonUstensileTableau.remove();
                       }
                     }
@@ -1581,7 +1544,6 @@ function Recherche() {
                 listeUstensilesRecettes.sort();
                 // Supression des doublons du tableau "listeUstensilesRecettes"
                 let listeDesUstensiles = [...new Set(listeUstensilesRecettes)];
-                console.log(listeDesUstensiles);
                 // Création de l'affichage de la liste des ustensiles
                 for (let l = 0; l <listeDesUstensiles.length; l++) {
                   let tableauUstensilesFiltres = document.createElement("button");
@@ -1610,12 +1572,7 @@ function Recherche() {
                   )
                   tableauRecettes = elementsTrouves;
                 }
-                console.log(tableauRecettes);
 
-                // Si tous les ustensiles ont été supprimés, alors affichage de toutes les recettes
-                /*if (document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
-                  recette();
-                }*/
                 // Sélection de tous les boutons des ustensiles filtrés sauf celui cliqué
                 let boutonsUstensile = document.querySelectorAll(".bouton-ustensile-filtre");
                 boutonsUstensile.forEach((boutonUstensile) => 
@@ -1640,7 +1597,6 @@ function Recherche() {
                               }
                             }
                           }
-                          console.log(elementsTrouves);
                           //elementsTrouves = [...new Set(elementsTrouves)];
 
                           // Appel de la fonction listeDesRecettesUstensiles() pour l'affichage des recettes restantes
@@ -1710,7 +1666,6 @@ function Recherche() {
 
                     for (let k = 0; listeUstensilesRecettes.length; k++) {
                       let y = listeUstensilesRecettes[k];
-                      console.log(y);
               
                       if (y != undefined) {
                         for(let i = 0; i < y.length; i++) {
@@ -1725,7 +1680,6 @@ function Recherche() {
                     listeUstensilesRecettes1.sort();
                     // Supression des doublons du tableau "listeUstensilesRecettes"
                     let listeDesUstensiles = [...new Set(listeUstensilesRecettes1)];
-                    console.log(listeDesUstensiles);
 
                     for (let j = 0; j < listeDesUstensiles.length; j++) {
                       let tableauUstensilesFiltres = document.createElement("button");
@@ -1878,7 +1832,6 @@ function Recherche() {
                 listeUstensilesRecettes.sort();
                 // Supression des doublons du tableau "listeUstensilesRecettes"
                 let listeDesUstensiles = [...new Set(listeUstensilesRecettes)];
-                console.log(listeDesUstensiles);
                 // Création de l'affichage de la liste des ustensiles
                 for (let l = 0; l <listeDesUstensiles.length; l++) {
                   let tableauUstensilesFiltres = document.createElement("button");
@@ -1887,8 +1840,6 @@ function Recherche() {
                   document.querySelector(".tableau-des-ustensiles").appendChild(tableauUstensilesFiltres);
                   tableauUstensilesFiltres.innerText = listeDesUstensiles[l];
                 }
-
-                console.log(tableauRecettes);
 
                 tableauRecettes = ElementsTrouvesSansDoublons;
 
@@ -1923,7 +1874,6 @@ function Recherche() {
                             for(let i = 0; i < tableauRecettes.length; i++) {
                               // Recherche de la valeur dans les ingrédients de la recette
                               let ingredientRecette = tableauRecettes[i].ingredients;
-                              //console.log(ingredientRecette);
                               for (let j= 0; j < ingredientRecette.length; j++) {
                                 let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                                 // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -1972,9 +1922,6 @@ function Recherche() {
                               }
                             }
 
-                            console.log(elementsTrouves);
-                            //elementsTrouves = [...new Set(elementsTrouves)];
-
                             // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                             listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
 
@@ -2017,8 +1964,6 @@ function Recherche() {
                                 }
                               }
                             }
-                            console.log(elementsTrouves);
-                            //elementsTrouves = [...new Set(elementsTrouves)];
 
                             // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                             listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
@@ -2144,124 +2089,119 @@ function Recherche() {
         
         // Fonction de création des boutons d'ingrédients sélectionnés et création d'un tableau des recettes restantes
         function clicBoutonlisteIngredients(tableauRecettes = recipes) {
-        
-        console.log(tableauRecettes);
-        
-        let clicBoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
-        clicBoutonIngredients.forEach((clicBoutonIngredient) =>
-        clicBoutonIngredient.addEventListener("click", () =>
-          {
-            document.querySelector("#ingredients-recherche").value = clicBoutonIngredient.name;
-        
-            // Création du bouton de l'ingrédient choisi
-            let boutonIngredientFiltre = document.createElement("button");
-            boutonIngredientFiltre.setAttribute("class", "bouton-ingredient-filtre");
-            boutonIngredientFiltre.setAttribute("name", document.querySelector("#ingredients-recherche").value);
-            let croixIngredientFiltre = document.createElement("i");
-            croixIngredientFiltre.setAttribute("class", "fa-regular fa-circle-xmark");
-            document.querySelector(".buttonsIngredientsRecherches").prepend(boutonIngredientFiltre);
-            boutonIngredientFiltre.textContent = document.querySelector("#ingredients-recherche").value, croixIngredientFiltre;
-            document.querySelector(".bouton-ingredient-filtre").appendChild(croixIngredientFiltre);
-        
-            // Masquage de la liste des ingrédients
-            document.querySelector("#ingredients-recherche").style.display = "none";
-            document.querySelector(".tableau-des-ingredients").style.display = "none";
-            document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
-            document.querySelector("#ingredients").style.display = "block";
-        
-            //------------------------------------------------------------------------------------------------------------------------------------------//
-            // Création du tableau de la liste des ingrédients
-            document.querySelector("#ingredients-recherche").value = "";
-            document.querySelector(".tableau-des-ingredients").innerHTML = "";
-            let listeIngredientsRecettes = [];
-            for (let i = 0; i < tableauRecettes.length; i++) {
-              let ingredientRecette = tableauRecettes[i].ingredients;
-              for (let j= 0; j < ingredientRecette.length; j++) {
-                listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
-              }
-            }
-            // Tri par ordre alphabétique des ingrédients
-            listeIngredientsRecettes.sort();
-            // Supression des doublons du tableau "listeIngredientsRecettes"
-            let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
-            // Création de l'affichage de la liste des ingrédients
-            for (let l = 0; l <listeDesIngredients.length; l++) {
-              let tableauIngredientsFiltres = document.createElement("button");
-              tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
-              tableauIngredientsFiltres.setAttribute("name", listeDesIngredients[l]);
-              document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
-              tableauIngredientsFiltres.innerText = listeDesIngredients[l];
-            }
-        
-            let elementsTrouves = [];
-            // Si aucun appareil et aucun ustensile sont sélectionnés, alors on reprend le tableau des 50 recettes
-            if (document.querySelector(".buttonsAppareilsRecherches").children.length == 0 && document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
-              tableauRecettes = recipes;
-            // Sinon on reprend la liste des recettes affichée à l'écran
-            } else {
-              let titresRecettes = document.querySelectorAll(".nomRecette")
-              titresRecettes.forEach((titreRecette) =>
-                {
-                  for (let m = 0; m < tableauRecettes.length; m++){
-                    if (titreRecette.textContent == tableauRecettes[m].name ) {
-                      elementsTrouves.push(tableauRecettes[m])
-                    }
+                
+          let clicBoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
+          clicBoutonIngredients.forEach((clicBoutonIngredient) =>
+            clicBoutonIngredient.addEventListener("click", () =>
+              {
+                document.querySelector("#ingredients-recherche").value = clicBoutonIngredient.name;
+            
+                // Création du bouton de l'ingrédient choisi
+                let boutonIngredientFiltre = document.createElement("button");
+                boutonIngredientFiltre.setAttribute("class", "bouton-ingredient-filtre");
+                boutonIngredientFiltre.setAttribute("name", document.querySelector("#ingredients-recherche").value);
+                let croixIngredientFiltre = document.createElement("i");
+                croixIngredientFiltre.setAttribute("class", "fa-regular fa-circle-xmark");
+                document.querySelector(".buttonsIngredientsRecherches").prepend(boutonIngredientFiltre);
+                boutonIngredientFiltre.textContent = document.querySelector("#ingredients-recherche").value, croixIngredientFiltre;
+                document.querySelector(".bouton-ingredient-filtre").appendChild(croixIngredientFiltre);
+            
+                // Masquage de la liste des ingrédients
+                document.querySelector("#ingredients-recherche").style.display = "none";
+                document.querySelector(".tableau-des-ingredients").style.display = "none";
+                document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
+                document.querySelector("#ingredients").style.display = "block";
+            
+                //------------------------------------------------------------------------------------------------------------------------------------------//
+                // Création du tableau de la liste des ingrédients
+                document.querySelector("#ingredients-recherche").value = "";
+                document.querySelector(".tableau-des-ingredients").innerHTML = "";
+                let listeIngredientsRecettes = [];
+                for (let i = 0; i < tableauRecettes.length; i++) {
+                  let ingredientRecette = tableauRecettes[i].ingredients;
+                  for (let j= 0; j < ingredientRecette.length; j++) {
+                    listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
                   }
                 }
-              )
-              tableauRecettes = elementsTrouves;
-            }
-            console.log(tableauRecettes);
-        
-            // Si tous les ingrédients ont été supprimés, alors affichage de toutes les recettes
-            if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0) {
-              recette();
-            }
-            // Sélection de tous les boutons des ingrédients filtrés sauf celui cliqué
-            let boutonsIngredient = document.querySelectorAll(".bouton-ingredient-filtre");
-            boutonsIngredient.forEach((boutonIngredient) => 
-              {
-                // Sélection de tous les boutons dans la liste des ingrédients
-                let BoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
-                BoutonIngredients.forEach((BoutonIngredient) =>
-                  {
-                    // Si le nom de l'ingrédient dans le tableau des ingrédients est égal à celui du nom du bouton ingrédient filtré restant alors on injecte cet ingrédient dans "elementsTrouves"
-                    if(BoutonIngredient.name == boutonIngredient.name) {
-                      document.querySelector("#ingredients-recherche").value = boutonIngredient.name;
-                      let elementsTrouves = [];
-                      let champDeRecherche = document.querySelector("#ingredients-recherche");
-                      for(let i = 0; i < tableauRecettes.length; i++) {
-                        // Recherche de la valeur dans les ingrédients de la recette
-                        let ingredientRecette = tableauRecettes[i].ingredients;
-                        //console.log(ingredientRecette);
-                        for (let j= 0; j < ingredientRecette.length; j++) {
-                          let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
-                          // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
-                          if (NomIngredientRecetteActuelle == champDeRecherche.value) {
-                            elementsTrouves.push(tableauRecettes[i]);
-                          }
+                // Tri par ordre alphabétique des ingrédients
+                listeIngredientsRecettes.sort();
+                // Supression des doublons du tableau "listeIngredientsRecettes"
+                let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
+                // Création de l'affichage de la liste des ingrédients
+                for (let l = 0; l <listeDesIngredients.length; l++) {
+                  let tableauIngredientsFiltres = document.createElement("button");
+                  tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
+                  tableauIngredientsFiltres.setAttribute("name", listeDesIngredients[l]);
+                  document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
+                  tableauIngredientsFiltres.innerText = listeDesIngredients[l];
+                }
+            
+                let elementsTrouves = [];
+                // Si aucun appareil et aucun ustensile sont sélectionnés, alors on reprend le tableau des 50 recettes
+                if (document.querySelector(".buttonsAppareilsRecherches").children.length == 0 && document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
+                  tableauRecettes = recipes;
+                // Sinon on reprend la liste des recettes affichée à l'écran
+                } else {
+                  let titresRecettes = document.querySelectorAll(".nomRecette")
+                  titresRecettes.forEach((titreRecette) =>
+                    {
+                      for (let m = 0; m < tableauRecettes.length; m++){
+                        if (titreRecette.textContent == tableauRecettes[m].name ) {
+                          elementsTrouves.push(tableauRecettes[m])
                         }
                       }
-                      // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
-                      listeDesRecettesIngredients(tableauRecettes = elementsTrouves);
-        
-                      // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
-                      let faAngleUps = document.querySelectorAll(".fa-angle-up");
-                      faAngleUps.forEach((faAngleUp) => 
-                        {
-                          faAngleUp.click();
-                        }
-                      )
                     }
+                  )
+                  tableauRecettes = elementsTrouves;
+                }
+                // Si tous les ingrédients ont été supprimés, alors affichage de toutes les recettes
+                if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0) {
+                  recette();
+                }
+                // Sélection de tous les boutons des ingrédients filtrés sauf celui cliqué
+                let boutonsIngredient = document.querySelectorAll(".bouton-ingredient-filtre");
+                boutonsIngredient.forEach((boutonIngredient) => 
+                  {
+                    // Sélection de tous les boutons dans la liste des ingrédients
+                    let BoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
+                    BoutonIngredients.forEach((BoutonIngredient) =>
+                      {
+                        // Si le nom de l'ingrédient dans le tableau des ingrédients est égal à celui du nom du bouton ingrédient filtré restant alors on injecte cet ingrédient dans "elementsTrouves"
+                        if(BoutonIngredient.name == boutonIngredient.name) {
+                          document.querySelector("#ingredients-recherche").value = boutonIngredient.name;
+                          let elementsTrouves = [];
+                          let champDeRecherche = document.querySelector("#ingredients-recherche");
+                          for(let i = 0; i < tableauRecettes.length; i++) {
+                            // Recherche de la valeur dans les ingrédients de la recette
+                            let ingredientRecette = tableauRecettes[i].ingredients;
+                            for (let j= 0; j < ingredientRecette.length; j++) {
+                              let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
+                              // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
+                              if (NomIngredientRecetteActuelle == champDeRecherche.value) {
+                                elementsTrouves.push(tableauRecettes[i]);
+                              }
+                            }
+                          }
+                          // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
+                          listeDesRecettesIngredients(tableauRecettes = elementsTrouves);
+            
+                          // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
+                          let faAngleUps = document.querySelectorAll(".fa-angle-up");
+                          faAngleUps.forEach((faAngleUp) => 
+                            {
+                              faAngleUp.click();
+                            }
+                          )
+                        }
+                      }
+                    )
                   }
                 )
+                suppressionBoutonFiltreIngredient(tableauRecettes = recipes)        
+                //------------------------------------------------------------------------------------------------------------------------------------------//
               }
             )
-            suppressionBoutonFiltreIngredient(tableauRecettes = recipes)        
-            //------------------------------------------------------------------------------------------------------------------------------------------//
-          }
-        )
-        )
+          )
         }
         
         // Fonction de recherche d'un ingrédient par saisie dans le champ "Rechercher un ingrédient"
@@ -2438,186 +2378,177 @@ function Recherche() {
         
         // fonction de suppression d'un ingrédient sélectionné
         function suppressionBoutonFiltreIngredient(tableauRecettes = recipes) {
-        let boutonsFiltreIngredients = document.querySelectorAll(".bouton-ingredient-filtre");
-        /*console.log(boutonsFiltreIngredients);*/
-        boutonsFiltreIngredients.forEach((boutonFiltreIngredient) =>
-        boutonFiltreIngredient.addEventListener("click", () =>
-          {
-            // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
-            let faAngleUps = document.querySelectorAll(".fa-angle-up");
-            faAngleUps.forEach((faAngleUp) => 
+          let boutonsFiltreIngredients = document.querySelectorAll(".bouton-ingredient-filtre");
+          boutonsFiltreIngredients.forEach((boutonFiltreIngredient) =>
+            boutonFiltreIngredient.addEventListener("click", () =>
               {
-                faAngleUp.click();
+                // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
+                let faAngleUps = document.querySelectorAll(".fa-angle-up");
+                faAngleUps.forEach((faAngleUp) => 
+                  {
+                    faAngleUp.click();
+                  }
+                )
+                // Suppression du bouton de l'ingrédient cliqué
+                boutonFiltreIngredient.remove();
+            
+                // Création du tableau de la liste des ingrédients
+                document.querySelector("#ingredients-recherche").value = "";
+                document.querySelector(".tableau-des-ingredients").innerHTML = "";
+                let listeIngredientsRecettes = [];
+                for (let i = 0; i < tableauRecettes.length; i++) {
+                  let ingredientRecette = tableauRecettes[i].ingredients;
+                  for (let j= 0; j < ingredientRecette.length; j++) {
+                    listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
+                  }
+                }
+                // Tri par ordre alphabétique des ingrédients
+                listeIngredientsRecettes.sort();
+                // Supression des doublons du tableau "listeIngredientsRecettes"
+                let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
+                // Création de l'affichage de la liste des ingrédients
+                for (let l = 0; l <listeDesIngredients.length; l++) {
+                  let tableauIngredientsFiltres = document.createElement("button");
+                  tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
+                  tableauIngredientsFiltres.setAttribute("name", listeDesIngredients[l]);
+                  document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
+                  tableauIngredientsFiltres.innerText = listeDesIngredients[l];
+                }
+            
+                tableauRecettes = recipes;
+            
+                // Si tous les ingrédients, appareils et ustensiles ont été supprimés, alors affichage de toutes les recettes
+                if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0 && document.querySelector(".buttonsAppareilsRecherches").children.length == 0 && document.querySelector(".buttonsUstensilesRecherches").children.length == 0 && document.querySelector("#barre-de-recherche").value == "") {
+                  recette();
+                }
+            
+                if (document.querySelector(".buttonsIngredientsRecherches").children.length != 0) {
+                  // Sélection de tous les boutons des ingrédients filtrés sauf celui cliqué
+                  let boutonsIngredient = document.querySelectorAll(".bouton-ingredient-filtre");
+                  boutonsIngredient.forEach((boutonIngredient) => 
+                    {
+                      // Sélection de tous les boutons dans la liste des ingrédients
+                      let BoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
+                      BoutonIngredients.forEach((BoutonIngredient) =>
+                        {
+                          // Si le nom de l'ingrédient dans le tableau des ingrédients est égal à celui du nom du bouton ingrédient filtré restant alors on injecte cet ingrédient dans "elementsTrouves"
+                          if(BoutonIngredient.name == boutonIngredient.name) {
+                            document.querySelector("#ingredients-recherche").value = boutonIngredient.name;
+                            let elementsTrouves = [];
+                            let champDeRecherche = document.querySelector("#ingredients-recherche");
+                            for(let i = 0; i < tableauRecettes.length; i++) {
+                              // Recherche de la valeur dans les ingrédients de la recette
+                              let ingredientRecette = tableauRecettes[i].ingredients;
+                              for (let j= 0; j < ingredientRecette.length; j++) {
+                                let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
+                                // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
+                                if (NomIngredientRecetteActuelle == champDeRecherche.value) {
+                                  elementsTrouves.push(tableauRecettes[i]);
+                                }
+                              }
+                            }
+                            // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
+                            listeDesRecettesIngredients(tableauRecettes = elementsTrouves);
+            
+                            // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
+                            let faAngleUps = document.querySelectorAll(".fa-angle-up");
+                            faAngleUps.forEach((faAngleUp) => 
+                              {
+                                faAngleUp.click();
+                              }
+                            )
+                          }
+                        }
+                      )
+                    }
+                  )
+                }
+            
+                if (document.querySelector(".buttonsAppareilsRecherches").children.length != 0) {
+                  // Sélection de tous les boutons des appareils filtrés sauf celui cliqué
+                  let boutonsAppareil = document.querySelectorAll(".bouton-appareil-filtre");
+                  boutonsAppareil.forEach((boutonAppareil) => 
+                    {
+                      // Sélection de tous les boutons dans la liste des appareils
+                      let BoutonAppareils = document.querySelectorAll(".tableau-appareils-filtres");
+                      BoutonAppareils.forEach((BoutonAppareil) =>
+                        {
+                          // Si le nom de l'appareil dans le tableau des appareils est égal à celui du nom du bouton appareil filtré restant alors on injecte cet appareil dans "elementsTrouves"
+                          if(BoutonAppareil.name == boutonAppareil.name) {
+                            document.querySelector("#appareils-recherche").value = boutonAppareil.name;
+                            let elementsTrouves = [];
+                            let champDeRecherche = document.querySelector("#appareils-recherche");
+                            for(let i = 0; i < tableauRecettes.length; i++) {
+                              // Recherche de la valeur dans les appareils de la recette
+                              let appareilRecette = tableauRecettes[i].appliance;
+                              // Injection des recettes contenant l'appareil sélectionné dans le tableau "elementsTrouves"
+                              if (appareilRecette == champDeRecherche.value) {
+                                elementsTrouves.push(tableauRecettes[i]);
+                              }
+                            }
+            
+                            // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
+                            listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
+            
+                            // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
+                            let faAngleUps = document.querySelectorAll(".fa-angle-up");
+                            faAngleUps.forEach((faAngleUp) => 
+                              {
+                                faAngleUp.click();
+                              }
+                            )
+                          }
+                        }
+                      )
+                    }
+                  )
+                }
+            
+                if (document.querySelector(".buttonsUstensilesRecherches").children.length != 0) {
+                  // Sélection de tous les boutons des ustensiles filtrés sauf celui cliqué
+                  let boutonsUstensile = document.querySelectorAll(".bouton-ustensile-filtre");
+                  boutonsUstensile.forEach((boutonUstensile) => 
+                    {
+                      // Sélection de tous les boutons dans la liste des ustensiles
+                      let BoutonUstensiles = document.querySelectorAll(".tableau-ustensiles-filtres");
+                      BoutonUstensiles.forEach((BoutonUstensile) =>
+                        {
+                          // Si le nom de l'ustensile dans le tableau des ustensiles est égal à celui du nom du bouton ustensile filtré restant alors on injecte cet ustensile dans "elementsTrouves"
+                          if(BoutonUstensile.name == boutonUstensile.name) {
+                            document.querySelector("#ustensiles-recherche").value = boutonUstensile.name;
+                            let elementsTrouves = [];
+                            let champDeRecherche = document.querySelector("#ustensiles-recherche");
+                            for(let i = 0; i < tableauRecettes.length; i++) {
+                              // Recherche de la valeur dans les ustensiles de la recette
+                              let ustensileRecette = tableauRecettes[i].ustensils;
+                              for (j= 0; j < ustensileRecette.length; j++) {
+                                let NomUstensileRecetteActuelle = ustensileRecette[j];
+                                // Injection des recettes contenant l'ustensile sélectionné dans le tableau "elementsTrouves"
+                                if (NomUstensileRecetteActuelle == champDeRecherche.value) {
+                                  elementsTrouves.push(tableauRecettes[i]);
+                                }
+                              }
+                            }
+            
+                            // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
+                            listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
+            
+                            // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
+                            let faAngleUps = document.querySelectorAll(".fa-angle-up");
+                            faAngleUps.forEach((faAngleUp) => 
+                              {
+                                faAngleUp.click();
+                              }
+                            )
+                          }
+                        }
+                      )
+                    }
+                  )
+                }
               }
             )
-            // Suppression du bouton de l'ingrédient cliqué
-            boutonFiltreIngredient.remove();
-        
-            // Création du tableau de la liste des ingrédients
-            document.querySelector("#ingredients-recherche").value = "";
-            document.querySelector(".tableau-des-ingredients").innerHTML = "";
-            let listeIngredientsRecettes = [];
-            for (let i = 0; i < tableauRecettes.length; i++) {
-              let ingredientRecette = tableauRecettes[i].ingredients;
-              for (let j= 0; j < ingredientRecette.length; j++) {
-                listeIngredientsRecettes.push(ingredientRecette[j].ingredient);
-              }
-            }
-            // Tri par ordre alphabétique des ingrédients
-            listeIngredientsRecettes.sort();
-            // Supression des doublons du tableau "listeIngredientsRecettes"
-            let listeDesIngredients = [...new Set(listeIngredientsRecettes)];
-            // Création de l'affichage de la liste des ingrédients
-            for (let l = 0; l <listeDesIngredients.length; l++) {
-              let tableauIngredientsFiltres = document.createElement("button");
-              tableauIngredientsFiltres.setAttribute("class", "tableau-ingredients-filtres");
-              tableauIngredientsFiltres.setAttribute("name", listeDesIngredients[l]);
-              document.querySelector(".tableau-des-ingredients").appendChild(tableauIngredientsFiltres);
-              tableauIngredientsFiltres.innerText = listeDesIngredients[l];
-            }
-        
-            console.log(tableauRecettes);
-        
-            tableauRecettes = recipes;
-        
-            // Si tous les ingrédients, appareils et ustensiles ont été supprimés, alors affichage de toutes les recettes
-            if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0 && document.querySelector(".buttonsAppareilsRecherches").children.length == 0 && document.querySelector(".buttonsUstensilesRecherches").children.length == 0 && document.querySelector("#barre-de-recherche").value == "") {
-              recette();
-            }
-        
-            if (document.querySelector(".buttonsIngredientsRecherches").children.length != 0) {
-              // Sélection de tous les boutons des ingrédients filtrés sauf celui cliqué
-              let boutonsIngredient = document.querySelectorAll(".bouton-ingredient-filtre");
-              boutonsIngredient.forEach((boutonIngredient) => 
-                {
-                  // Sélection de tous les boutons dans la liste des ingrédients
-                  let BoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
-                  BoutonIngredients.forEach((BoutonIngredient) =>
-                    {
-                      // Si le nom de l'ingrédient dans le tableau des ingrédients est égal à celui du nom du bouton ingrédient filtré restant alors on injecte cet ingrédient dans "elementsTrouves"
-                      if(BoutonIngredient.name == boutonIngredient.name) {
-                        document.querySelector("#ingredients-recherche").value = boutonIngredient.name;
-                        let elementsTrouves = [];
-                        let champDeRecherche = document.querySelector("#ingredients-recherche");
-                        for(let i = 0; i < tableauRecettes.length; i++) {
-                          // Recherche de la valeur dans les ingrédients de la recette
-                          let ingredientRecette = tableauRecettes[i].ingredients;
-                          //console.log(ingredientRecette);
-                          for (let j= 0; j < ingredientRecette.length; j++) {
-                            let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
-                            // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
-                            if (NomIngredientRecetteActuelle == champDeRecherche.value) {
-                              elementsTrouves.push(tableauRecettes[i]);
-                            }
-                          }
-                        }
-                        // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
-                        listeDesRecettesIngredients(tableauRecettes = elementsTrouves);
-        
-                        // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
-                        let faAngleUps = document.querySelectorAll(".fa-angle-up");
-                        faAngleUps.forEach((faAngleUp) => 
-                          {
-                            faAngleUp.click();
-                          }
-                        )
-                      }
-                    }
-                  )
-                }
-              )
-            }
-        
-            if (document.querySelector(".buttonsAppareilsRecherches").children.length != 0) {
-              // Sélection de tous les boutons des appareils filtrés sauf celui cliqué
-              let boutonsAppareil = document.querySelectorAll(".bouton-appareil-filtre");
-              boutonsAppareil.forEach((boutonAppareil) => 
-                {
-                  // Sélection de tous les boutons dans la liste des appareils
-                  let BoutonAppareils = document.querySelectorAll(".tableau-appareils-filtres");
-                  BoutonAppareils.forEach((BoutonAppareil) =>
-                    {
-                      // Si le nom de l'appareil dans le tableau des appareils est égal à celui du nom du bouton appareil filtré restant alors on injecte cet appareil dans "elementsTrouves"
-                      if(BoutonAppareil.name == boutonAppareil.name) {
-                        document.querySelector("#appareils-recherche").value = boutonAppareil.name;
-                        let elementsTrouves = [];
-                        let champDeRecherche = document.querySelector("#appareils-recherche");
-                        for(let i = 0; i < tableauRecettes.length; i++) {
-                          // Recherche de la valeur dans les appareils de la recette
-                          let appareilRecette = tableauRecettes[i].appliance;
-                          // Injection des recettes contenant l'appareil sélectionné dans le tableau "elementsTrouves"
-                          if (appareilRecette == champDeRecherche.value) {
-                            elementsTrouves.push(tableauRecettes[i]);
-                          }
-                        }
-        
-                        console.log(elementsTrouves);
-                        //elementsTrouves = [...new Set(elementsTrouves)];
-        
-                        // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
-                        listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
-        
-                        // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
-                        let faAngleUps = document.querySelectorAll(".fa-angle-up");
-                        faAngleUps.forEach((faAngleUp) => 
-                          {
-                            faAngleUp.click();
-                          }
-                        )
-                      }
-                    }
-                  )
-                }
-              )
-            }
-        
-            if (document.querySelector(".buttonsUstensilesRecherches").children.length != 0) {
-              // Sélection de tous les boutons des ustensiles filtrés sauf celui cliqué
-              let boutonsUstensile = document.querySelectorAll(".bouton-ustensile-filtre");
-              boutonsUstensile.forEach((boutonUstensile) => 
-                {
-                  // Sélection de tous les boutons dans la liste des ustensiles
-                  let BoutonUstensiles = document.querySelectorAll(".tableau-ustensiles-filtres");
-                  BoutonUstensiles.forEach((BoutonUstensile) =>
-                    {
-                      // Si le nom de l'ustensile dans le tableau des ustensiles est égal à celui du nom du bouton ustensile filtré restant alors on injecte cet ustensile dans "elementsTrouves"
-                      if(BoutonUstensile.name == boutonUstensile.name) {
-                        document.querySelector("#ustensiles-recherche").value = boutonUstensile.name;
-                        let elementsTrouves = [];
-                        let champDeRecherche = document.querySelector("#ustensiles-recherche");
-                        for(let i = 0; i < tableauRecettes.length; i++) {
-                          // Recherche de la valeur dans les ustensiles de la recette
-                          let ustensileRecette = tableauRecettes[i].ustensils;
-                          for (j= 0; j < ustensileRecette.length; j++) {
-                            let NomUstensileRecetteActuelle = ustensileRecette[j];
-                            // Injection des recettes contenant l'ustensile sélectionné dans le tableau "elementsTrouves"
-                            if (NomUstensileRecetteActuelle == champDeRecherche.value) {
-                              elementsTrouves.push(tableauRecettes[i]);
-                            }
-                          }
-                        }
-                        console.log(elementsTrouves);
-                        //elementsTrouves = [...new Set(elementsTrouves)];
-        
-                        // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
-                        listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
-        
-                        // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
-                        let faAngleUps = document.querySelectorAll(".fa-angle-up");
-                        faAngleUps.forEach((faAngleUp) => 
-                          {
-                            faAngleUp.click();
-                          }
-                        )
-                      }
-                    }
-                  )
-                }
-              )
-            }
-          }
-        )
-        )
+          )
         }
         
         //-------------------------------------------------------------------------------------------------------------------------------------------//
@@ -2625,195 +2556,192 @@ function Recherche() {
         // Fonction pour la création de la liste des appareils
         //function listeAppareils(tableauRecettes = recipes) {
         function listeAppareils() {
-        let appareils = document.querySelector("#appareils");
-        appareils.addEventListener("click", () =>
-        {
-          document.querySelector("#appareils-recherche").value = "";
-          document.querySelector(".tableau-des-appareils").innerHTML = "";
-        
-          // Création de la liste appareils
-          let listeAppareilsRecettes = [];
-          let AppareilsRecettes = document.querySelectorAll(".appareils-lightbox");
-          //console.log(AppareilsRecettes);
-          AppareilsRecettes.forEach((AppareilRecettes) =>
+          let appareils = document.querySelector("#appareils");
+          appareils.addEventListener("click", () =>
             {
-              listeAppareilsRecettes.push(AppareilRecettes.getAttribute("name"));
-            }
-          )
-          console.log(listeAppareilsRecettes);
-        
-          // Tri par ordre alphabétique des valeurs
-          listeAppareilsRecettes.sort();
-          // Supression des doublons du tableau "listeAppareilsRecettes"
-          let listeDesAppareils = [...new Set(listeAppareilsRecettes)];
-        
-          for (let j = 0; j < listeDesAppareils.length; j++) {
-            let tableauAppareilsFiltres = document.createElement("button");
-            tableauAppareilsFiltres.setAttribute("class", "tableau-appareils-filtres");
-            tableauAppareilsFiltres.setAttribute("name",listeDesAppareils[j]);
-            document.querySelector(".tableau-des-appareils").appendChild(tableauAppareilsFiltres);
-            tableauAppareilsFiltres.innerText = listeDesAppareils[j];
-          }
-        
-          // Supression des boutons du tableau des appareils déjà sélectionnés
-          let boutonsAppareilsFiltres = document.querySelectorAll(".bouton-appareil-filtre");
-          boutonsAppareilsFiltres.forEach((boutonAppareilFiltre) =>
-            {
-              let boutonsAppareilsTableau = document.querySelectorAll(".tableau-appareils-filtres");
-              boutonsAppareilsTableau.forEach((boutonAppareilTableau) =>
+              document.querySelector("#appareils-recherche").value = "";
+              document.querySelector(".tableau-des-appareils").innerHTML = "";
+            
+              // Création de la liste appareils
+              let listeAppareilsRecettes = [];
+              let AppareilsRecettes = document.querySelectorAll(".appareils-lightbox");
+              AppareilsRecettes.forEach((AppareilRecettes) =>
                 {
-                    if (boutonAppareilTableau.name == boutonAppareilFiltre.name) {
-                    boutonAppareilTableau.remove();
-                  }
+                  listeAppareilsRecettes.push(AppareilRecettes.getAttribute("name"));
                 }
               )
+            
+              // Tri par ordre alphabétique des valeurs
+              listeAppareilsRecettes.sort();
+              // Supression des doublons du tableau "listeAppareilsRecettes"
+              let listeDesAppareils = [...new Set(listeAppareilsRecettes)];
+            
+              for (let j = 0; j < listeDesAppareils.length; j++) {
+                let tableauAppareilsFiltres = document.createElement("button");
+                tableauAppareilsFiltres.setAttribute("class", "tableau-appareils-filtres");
+                tableauAppareilsFiltres.setAttribute("name",listeDesAppareils[j]);
+                document.querySelector(".tableau-des-appareils").appendChild(tableauAppareilsFiltres);
+                tableauAppareilsFiltres.innerText = listeDesAppareils[j];
+              }
+            
+              // Supression des boutons du tableau des appareils déjà sélectionnés
+              let boutonsAppareilsFiltres = document.querySelectorAll(".bouton-appareil-filtre");
+              boutonsAppareilsFiltres.forEach((boutonAppareilFiltre) =>
+                {
+                  let boutonsAppareilsTableau = document.querySelectorAll(".tableau-appareils-filtres");
+                  boutonsAppareilsTableau.forEach((boutonAppareilTableau) =>
+                    {
+                        if (boutonAppareilTableau.name == boutonAppareilFiltre.name) {
+                        boutonAppareilTableau.remove();
+                      }
+                    }
+                  )
+                }
+              );
+            
+            
+              document.querySelector("#appareils-recherche").style.display = "block";
+              document.querySelector(".tableau-des-appareils").style.display = "block";
+              document.querySelector("#menu > div.boutons-appareils-recherche-angle-up-liste > div > div.appareils-recherche-angle-up > button").style.display = "block";
+              document.querySelector("#appareils").style.display = "none";
+            
+              document.querySelector("#ingredients-recherche").style.display = "none";
+              document.querySelector(".tableau-des-ingredients").style.display = "none";
+              document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
+              document.querySelector("#ingredients").style.display = "block";
+            
+              document.querySelector("#ustensiles-recherche").style.display = "none";
+              document.querySelector(".tableau-des-ustensiles").style.display = "none";
+              document.querySelector("#menu > div.boutons-ustensiles-recherche-angle-up-liste > div > div.ustensiles-recherche-angle-up > button").style.display = "none";
+              document.querySelector("#ustensiles").style.display = "block";
+            
+              saisieAppareil();
+              clicBoutonlisteAppareils();
             }
-          );
-        
-        
-          document.querySelector("#appareils-recherche").style.display = "block";
-          document.querySelector(".tableau-des-appareils").style.display = "block";
-          document.querySelector("#menu > div.boutons-appareils-recherche-angle-up-liste > div > div.appareils-recherche-angle-up > button").style.display = "block";
-          document.querySelector("#appareils").style.display = "none";
-        
-          document.querySelector("#ingredients-recherche").style.display = "none";
-          document.querySelector(".tableau-des-ingredients").style.display = "none";
-          document.querySelector("#menu > div.boutons-ingredients-recherche-angle-up-liste > div > div.ingredients-recherche-angle-up > button").style.display = "none";
-          document.querySelector("#ingredients").style.display = "block";
-        
-          document.querySelector("#ustensiles-recherche").style.display = "none";
-          document.querySelector(".tableau-des-ustensiles").style.display = "none";
-          document.querySelector("#menu > div.boutons-ustensiles-recherche-angle-up-liste > div > div.ustensiles-recherche-angle-up > button").style.display = "none";
-          document.querySelector("#ustensiles").style.display = "block";
-        
-          saisieAppareil();
-          clicBoutonlisteAppareils();
-        }
-        )
+          )
         }
         listeAppareils();
         
         // Fonction de création des boutons d'appareils sélectionnés et création d'un tableau des recettes restantes
         function clicBoutonlisteAppareils(tableauRecettes = recipes) {
-        let clicBoutonAppareils = document.querySelectorAll(".tableau-appareils-filtres");
-        clicBoutonAppareils.forEach((clicBoutonAppareil) =>
-        clicBoutonAppareil.addEventListener("click", () =>
-          {
-            document.querySelector("#appareils-recherche").value = clicBoutonAppareil.name;
-        
-            // Création du bouton de l'appareil choisi
-            let boutonAppareilFiltre = document.createElement("button");
-            boutonAppareilFiltre.setAttribute("class", "bouton-appareil-filtre");
-            boutonAppareilFiltre.setAttribute("name", document.querySelector("#appareils-recherche").value);
-            let croixAppareilFiltre = document.createElement("i");
-            croixAppareilFiltre.setAttribute("class", "fa-regular fa-circle-xmark");
-            document.querySelector(".buttonsAppareilsRecherches").prepend(boutonAppareilFiltre);
-            boutonAppareilFiltre.textContent = document.querySelector("#appareils-recherche").value, croixAppareilFiltre;
-            document.querySelector(".bouton-appareil-filtre").appendChild(croixAppareilFiltre);
-        
-            // Création d'un bouton à supprimer pour le lancement de la fonction suppressionBoutonFiltreAppareil()
-            /*let boutonAppareilASupprimer = document.createElement("button");
-            boutonAppareilASupprimer.setAttribute("class", "bouton-appareil-filtre");
-            document.querySelector(".buttonsAppareilsRecherches").prepend(boutonAppareilASupprimer);*/
-        
-            // Masquage de la liste des appareils
-            document.querySelector("#appareils-recherche").style.display = "none";
-            document.querySelector(".tableau-des-appareils").style.display = "none";
-            document.querySelector("#menu > div.boutons-appareils-recherche-angle-up-liste > div > div.appareils-recherche-angle-up > button").style.display = "none";
-            document.querySelector("#appareils").style.display = "block";
-        
-            // Suppressiion du bouton à supprimer et lancement de la fonction suppressionBoutonFiltreAppareil()
-            //suppressionBoutonFiltreAppareil(tableauRecettes = recipes);
-            //boutonAppareilASupprimer.click();
-        
-        
-            // Création du tableau de la liste des appareils
-            document.querySelector("#appareils-recherche").value = "";
-            document.querySelector(".tableau-des-appareils").innerHTML = "";
-            let listeAppareilsRecettes = [];
-            for (let i = 0; i < tableauRecettes.length; i++) {
-              let appareilRecette = tableauRecettes[i].appliance;
-              //for (j= 0; j < appareilRecette.length; j++) {
-                listeAppareilsRecettes.push(appareilRecette);
-              //}
-            }
-            // Tri par ordre alphabétique des appareils
-            listeAppareilsRecettes.sort();
-            // Supression des doublons du tableau "listeAppareilsRecettes"
-            let listeDesAppareils = [...new Set(listeAppareilsRecettes)];
-            // Création de l'affichage de la liste des appareils
-            for (let l = 0; l <listeDesAppareils.length; l++) {
-              let tableauAppareilsFiltres = document.createElement("button");
-              tableauAppareilsFiltres.setAttribute("class", "tableau-appareils-filtres");
-              tableauAppareilsFiltres.setAttribute("name", listeDesAppareils[l]);
-              document.querySelector(".tableau-des-appareils").appendChild(tableauAppareilsFiltres);
-              tableauAppareilsFiltres.innerText = listeDesAppareils[l];
-            }
-        
-            //tableauRecettes = recipes;
-            let elementsTrouves = [];
-            // Si aucun ingrédient et aucun ustensile sont sélectionnés, alors on reprend le tableau des 50 recettes
-            if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0 && document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
-              tableauRecettes = recipes;
-            } else {
-              let titresRecettes = document.querySelectorAll(".nomRecette")
-              titresRecettes.forEach((titreRecette) =>
-                {
-                  for (let m = 0; m < tableauRecettes.length; m++){
-                    if (titreRecette.textContent == tableauRecettes[m].name ) {
-                      elementsTrouves.push(tableauRecettes[m])
-                    }
-                  }
-                }
-              )
-              tableauRecettes = elementsTrouves;
-            }
-            console.log(tableauRecettes);
-        
-            // Si tous les appareils ont été supprimés, alors affichage de toutes les recettes
-            if (document.querySelector(".buttonsAppareilsRecherches").children.length == 0) {
-              recette();
-            }
-            // Sélection de tous les boutons des appareils filtrés sauf celui cliqué
-            let boutonsAppareil = document.querySelectorAll(".bouton-appareil-filtre");
-            boutonsAppareil.forEach((boutonAppareil) => 
+          let clicBoutonAppareils = document.querySelectorAll(".tableau-appareils-filtres");
+          clicBoutonAppareils.forEach((clicBoutonAppareil) =>
+            clicBoutonAppareil.addEventListener("click", () =>
               {
-                // Sélection de tous les boutons dans la liste des appareils
-                let BoutonAppareils = document.querySelectorAll(".tableau-appareils-filtres");
-                BoutonAppareils.forEach((BoutonAppareil) =>
-                  {
-                    // Si le nom de l'appareil dans le tableau des appareils est égal à celui du nom du bouton appareil filtré restant alors on injecte cet appareil dans "elementsTrouves"
-                    if(BoutonAppareil.name == boutonAppareil.name) {
-                      document.querySelector("#appareils-recherche").value = boutonAppareil.name;
-                      let elementsTrouves = [];
-                      let champDeRecherche = document.querySelector("#appareils-recherche");
-                      for(let i = 0; i < tableauRecettes.length; i++) {
-                        // Recherche de la valeur dans les appareils de la recette
-                        let appareilRecette = tableauRecettes[i].appliance;
-                        // Injection des recettes contenant l'appareil sélectionné dans le tableau "elementsTrouves"
-                        if (appareilRecette == champDeRecherche.value) {
-                          elementsTrouves.push(tableauRecettes[i]);
+                document.querySelector("#appareils-recherche").value = clicBoutonAppareil.name;
+            
+                // Création du bouton de l'appareil choisi
+                let boutonAppareilFiltre = document.createElement("button");
+                boutonAppareilFiltre.setAttribute("class", "bouton-appareil-filtre");
+                boutonAppareilFiltre.setAttribute("name", document.querySelector("#appareils-recherche").value);
+                let croixAppareilFiltre = document.createElement("i");
+                croixAppareilFiltre.setAttribute("class", "fa-regular fa-circle-xmark");
+                document.querySelector(".buttonsAppareilsRecherches").prepend(boutonAppareilFiltre);
+                boutonAppareilFiltre.textContent = document.querySelector("#appareils-recherche").value, croixAppareilFiltre;
+                document.querySelector(".bouton-appareil-filtre").appendChild(croixAppareilFiltre);
+            
+                // Création d'un bouton à supprimer pour le lancement de la fonction suppressionBoutonFiltreAppareil()
+                /*let boutonAppareilASupprimer = document.createElement("button");
+                boutonAppareilASupprimer.setAttribute("class", "bouton-appareil-filtre");
+                document.querySelector(".buttonsAppareilsRecherches").prepend(boutonAppareilASupprimer);*/
+            
+                // Masquage de la liste des appareils
+                document.querySelector("#appareils-recherche").style.display = "none";
+                document.querySelector(".tableau-des-appareils").style.display = "none";
+                document.querySelector("#menu > div.boutons-appareils-recherche-angle-up-liste > div > div.appareils-recherche-angle-up > button").style.display = "none";
+                document.querySelector("#appareils").style.display = "block";
+            
+                // Suppressiion du bouton à supprimer et lancement de la fonction suppressionBoutonFiltreAppareil()
+                //suppressionBoutonFiltreAppareil(tableauRecettes = recipes);
+                //boutonAppareilASupprimer.click();
+            
+            
+                // Création du tableau de la liste des appareils
+                document.querySelector("#appareils-recherche").value = "";
+                document.querySelector(".tableau-des-appareils").innerHTML = "";
+                let listeAppareilsRecettes = [];
+                for (let i = 0; i < tableauRecettes.length; i++) {
+                  let appareilRecette = tableauRecettes[i].appliance;
+                  //for (j= 0; j < appareilRecette.length; j++) {
+                    listeAppareilsRecettes.push(appareilRecette);
+                  //}
+                }
+                // Tri par ordre alphabétique des appareils
+                listeAppareilsRecettes.sort();
+                // Supression des doublons du tableau "listeAppareilsRecettes"
+                let listeDesAppareils = [...new Set(listeAppareilsRecettes)];
+                // Création de l'affichage de la liste des appareils
+                for (let l = 0; l <listeDesAppareils.length; l++) {
+                  let tableauAppareilsFiltres = document.createElement("button");
+                  tableauAppareilsFiltres.setAttribute("class", "tableau-appareils-filtres");
+                  tableauAppareilsFiltres.setAttribute("name", listeDesAppareils[l]);
+                  document.querySelector(".tableau-des-appareils").appendChild(tableauAppareilsFiltres);
+                  tableauAppareilsFiltres.innerText = listeDesAppareils[l];
+                }
+            
+                //tableauRecettes = recipes;
+                let elementsTrouves = [];
+                // Si aucun ingrédient et aucun ustensile sont sélectionnés, alors on reprend le tableau des 50 recettes
+                if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0 && document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
+                  tableauRecettes = recipes;
+                } else {
+                  let titresRecettes = document.querySelectorAll(".nomRecette")
+                  titresRecettes.forEach((titreRecette) =>
+                    {
+                      for (let m = 0; m < tableauRecettes.length; m++){
+                        if (titreRecette.textContent == tableauRecettes[m].name ) {
+                          elementsTrouves.push(tableauRecettes[m])
                         }
                       }
-                      // Appel de la fonction listeDesRecettesAppareils() pour l'affichage des recettes restantes
-                      listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
-        
-                      // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un appareil
-                      let faAngleUps = document.querySelectorAll(".fa-angle-up");
-                      faAngleUps.forEach((faAngleUp) => 
-                        {
-                          faAngleUp.click();
-                        }
-                      )
                     }
+                  )
+                  tableauRecettes = elementsTrouves;
+                }
+            
+                // Si tous les appareils ont été supprimés, alors affichage de toutes les recettes
+                if (document.querySelector(".buttonsAppareilsRecherches").children.length == 0) {
+                  recette();
+                }
+                // Sélection de tous les boutons des appareils filtrés sauf celui cliqué
+                let boutonsAppareil = document.querySelectorAll(".bouton-appareil-filtre");
+                boutonsAppareil.forEach((boutonAppareil) => 
+                  {
+                    // Sélection de tous les boutons dans la liste des appareils
+                    let BoutonAppareils = document.querySelectorAll(".tableau-appareils-filtres");
+                    BoutonAppareils.forEach((BoutonAppareil) =>
+                      {
+                        // Si le nom de l'appareil dans le tableau des appareils est égal à celui du nom du bouton appareil filtré restant alors on injecte cet appareil dans "elementsTrouves"
+                        if(BoutonAppareil.name == boutonAppareil.name) {
+                          document.querySelector("#appareils-recherche").value = boutonAppareil.name;
+                          let elementsTrouves = [];
+                          let champDeRecherche = document.querySelector("#appareils-recherche");
+                          for(let i = 0; i < tableauRecettes.length; i++) {
+                            // Recherche de la valeur dans les appareils de la recette
+                            let appareilRecette = tableauRecettes[i].appliance;
+                            // Injection des recettes contenant l'appareil sélectionné dans le tableau "elementsTrouves"
+                            if (appareilRecette == champDeRecherche.value) {
+                              elementsTrouves.push(tableauRecettes[i]);
+                            }
+                          }
+                          // Appel de la fonction listeDesRecettesAppareils() pour l'affichage des recettes restantes
+                          listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
+            
+                          // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un appareil
+                          let faAngleUps = document.querySelectorAll(".fa-angle-up");
+                          faAngleUps.forEach((faAngleUp) => 
+                            {
+                              faAngleUp.click();
+                            }
+                          )
+                        }
+                      }
+                    )
                   }
                 )
+                suppressionBoutonFiltreAppareil(tableauRecettes = recipes);      
               }
             )
-            suppressionBoutonFiltreAppareil(tableauRecettes = recipes);      
-          }
-        )
-        )
+          )
         }
         
         // Fonction de recherche d'un appareil par saisie dans le champ "Rechercher un appareil"
@@ -2880,7 +2808,6 @@ function Recherche() {
                 let boutonsAppareilsFiltres = document.querySelectorAll(".bouton-appareil-filtre");
                 boutonsAppareilsFiltres.forEach((boutonAppareilFiltre) =>
                   {
-                    //console.log(boutonAppareilFiltre.name);
                     let boutonsAppareilsTableau = document.querySelectorAll(".tableau-appareils-filtres");
                     boutonsAppareilsTableau.forEach((boutonAppareilTableau) =>
                       {
@@ -2916,7 +2843,6 @@ function Recherche() {
         }
         )
         let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
-        //console.log(ElementsTrouvesSansDoublons);
         
         let listeRecette = '';
         let recetteLightBox = '';
@@ -3031,8 +2957,6 @@ function Recherche() {
               tableauAppareilsFiltres.innerText = listeDesAppareils[l];
             }
         
-            console.log(tableauRecettes);
-        
             tableauRecettes = recipes;
         
             // Si tous les ingrédients, appareils et ustensiles ont été supprimés, alors affichage de toutes les recettes
@@ -3057,7 +2981,6 @@ function Recherche() {
                         for(let i = 0; i < tableauRecettes.length; i++) {
                           // Recherche de la valeur dans les ingrédients de la recette
                           let ingredientRecette = tableauRecettes[i].ingredients;
-                          //console.log(ingredientRecette);
                           for (let j= 0; j < ingredientRecette.length; j++) {
                             let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                             // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -3105,10 +3028,7 @@ function Recherche() {
                             elementsTrouves.push(tableauRecettes[i]);
                           }
                         }
-        
-                        console.log(elementsTrouves);
-                        //elementsTrouves = [...new Set(elementsTrouves)];
-        
+                
                         // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                         listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
         
@@ -3151,8 +3071,6 @@ function Recherche() {
                             }
                           }
                         }
-                        console.log(elementsTrouves);
-                        //elementsTrouves = [...new Set(elementsTrouves)];
         
                         // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                         listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
@@ -3192,20 +3110,15 @@ function Recherche() {
           let UstensilesRecettes = document.querySelectorAll(".ustensiles-lightbox");
           UstensilesRecettes.forEach((UstensileRecettes) =>
             {
-              //console.log("UstensileRecettes ça marche");
-              //console.log(UstensileRecettes.getAttribute("name"));
               listeUstensilesRecettes1.push(UstensileRecettes.getAttribute("name").split(','));
-              //console.log(listeUstensilesRecettes);
             }
           )
         
           let listeUstensilesRecettes = []
           let listeUstensilesRecettes2 = "";
         
-          console.log(listeUstensilesRecettes1);
           for (let k = 0; listeUstensilesRecettes1.length; k++) {
             let y = listeUstensilesRecettes1[k];
-            //console.log(y);
         
             if (y != undefined) {
               for(let i = 0; i < y.length; i++) {
@@ -3216,16 +3129,12 @@ function Recherche() {
             }
             listeUstensilesRecettes2 = [...new Set(listeUstensilesRecettes)];
             listeUstensilesRecettes2.sort();
-        
-            //console.log(listeUstensilesRecettes2);
           }
         
           // Tri par ordre alphabétique des valeurs
           listeUstensilesRecettes2.sort();
           // Supression des doublons du tableau "listeUstensilesRecettes"
-          let listeDesUstensiles = [...new Set(listeUstensilesRecettes2)];
-          //console.log(listeDesUstensiles);
-        
+          let listeDesUstensiles = [...new Set(listeUstensilesRecettes2)];        
         
           for (let j = 0; j < listeDesUstensiles.length; j++) {
             let tableauUstensilesFiltres = document.createElement("button");
@@ -3240,13 +3149,10 @@ function Recherche() {
           let boutonsUstensilesFiltres = document.querySelectorAll(".bouton-ustensile-filtre");
           boutonsUstensilesFiltres.forEach((boutonUstensileFiltre) =>
             {
-              //console.log(boutonUstensileFiltre.name);
               let boutonsUstensilesTableau = document.querySelectorAll(".tableau-ustensiles-filtres");
               boutonsUstensilesTableau.forEach((boutonUstensileTableau) =>
                 {
-                  //console.log(boutonUstensileTableau.getAttribute("name"));
                     if (boutonUstensileTableau.name == boutonUstensileFiltre.name) {
-                    //console.log(boutonUstensileTableau.name);
                     boutonUstensileTableau.remove();
                   }
                 }
@@ -3323,7 +3229,6 @@ function Recherche() {
             listeUstensilesRecettes.sort();
             // Supression des doublons du tableau "listeUstensilesRecettes"
             let listeDesUstensiles = [...new Set(listeUstensilesRecettes)];
-            console.log(listeDesUstensiles);
             // Création de l'affichage de la liste des ustensiles
             for (let l = 0; l <listeDesUstensiles.length; l++) {
               let tableauUstensilesFiltres = document.createElement("button");
@@ -3351,7 +3256,6 @@ function Recherche() {
               )
               tableauRecettes = elementsTrouves;
             }
-            console.log(tableauRecettes);
         
             // Si tous les ustensiles ont été supprimés, alors affichage de toutes les recettes
             if (document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
@@ -3381,8 +3285,6 @@ function Recherche() {
                           }
                         }
                       }
-                      console.log(elementsTrouves);
-                      //elementsTrouves = [...new Set(elementsTrouves)];
         
                       // Appel de la fonction listeDesRecettesUstensiles() pour l'affichage des recettes restantes
                       listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
@@ -3451,7 +3353,6 @@ function Recherche() {
         
                 for (let k = 0; listeUstensilesRecettes.length; k++) {
                   let y = listeUstensilesRecettes[k];
-                  console.log(y);
           
                   if (y != undefined) {
                     for(let i = 0; i < y.length; i++) {
@@ -3466,7 +3367,6 @@ function Recherche() {
                 listeUstensilesRecettes1.sort();
                 // Supression des doublons du tableau "listeUstensilesRecettes"
                 let listeDesUstensiles = [...new Set(listeUstensilesRecettes1)];
-                console.log(listeDesUstensiles);
         
                 for (let j = 0; j < listeDesUstensiles.length; j++) {
                   let tableauUstensilesFiltres = document.createElement("button");
@@ -3619,7 +3519,6 @@ function Recherche() {
             listeUstensilesRecettes.sort();
             // Supression des doublons du tableau "listeUstensilesRecettes"
             let listeDesUstensiles = [...new Set(listeUstensilesRecettes)];
-            console.log(listeDesUstensiles);
             // Création de l'affichage de la liste des ustensiles
             for (let l = 0; l <listeDesUstensiles.length; l++) {
               let tableauUstensilesFiltres = document.createElement("button");
@@ -3628,8 +3527,6 @@ function Recherche() {
               document.querySelector(".tableau-des-ustensiles").appendChild(tableauUstensilesFiltres);
               tableauUstensilesFiltres.innerText = listeDesUstensiles[l];
             }
-        
-            console.log(tableauRecettes);
         
             tableauRecettes = recipes;
         
@@ -3655,7 +3552,6 @@ function Recherche() {
                         for(let i = 0; i < tableauRecettes.length; i++) {
                           // Recherche de la valeur dans les ingrédients de la recette
                           let ingredientRecette = tableauRecettes[i].ingredients;
-                          //console.log(ingredientRecette);
                           for (let j= 0; j < ingredientRecette.length; j++) {
                             let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                             // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -3704,9 +3600,6 @@ function Recherche() {
                           }
                         }
         
-                        console.log(elementsTrouves);
-                        //elementsTrouves = [...new Set(elementsTrouves)];
-        
                         // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                         listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
         
@@ -3749,9 +3642,6 @@ function Recherche() {
                             }
                           }
                         }
-                        console.log(elementsTrouves);
-                        //elementsTrouves = [...new Set(elementsTrouves)];
-        
                         // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                         listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
         
@@ -3910,7 +3800,6 @@ function Recherche() {
     listeIngredients();
 
     function clicBoutonlisteIngredients(tableauRecettes = recipes) {
-      console.log(tableauRecettes);
       let clicBoutonIngredients = document.querySelectorAll(".tableau-ingredients-filtres");
       clicBoutonIngredients.forEach((clicBoutonIngredient) =>
         clicBoutonIngredient.addEventListener("click", () =>
@@ -3975,8 +3864,6 @@ function Recherche() {
               )
               tableauRecettes = elementsTrouves;
             }
-            console.log(tableauRecettes);
-
             // Si tous les ingrédients ont été supprimés, alors affichage de toutes les recettes
             if (document.querySelector(".buttonsIngredientsRecherches").children.length == 0) {
               recette();
@@ -3997,7 +3884,6 @@ function Recherche() {
                       for(let i = 0; i < tableauRecettes.length; i++) {
                         // Recherche de la valeur dans les ingrédients de la recette
                         let ingredientRecette = tableauRecettes[i].ingredients;
-                        //console.log(ingredientRecette);
                         for (let j= 0; j < ingredientRecette.length; j++) {
                           let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                           // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -4203,7 +4089,6 @@ function Recherche() {
     // fonction de suppression d'un ingrédient sélectionné
     function suppressionBoutonFiltreIngredient(tableauRecettes = recipes) {
     let boutonsFiltreIngredients = document.querySelectorAll(".bouton-ingredient-filtre");
-    /*console.log(boutonsFiltreIngredients);*/
     boutonsFiltreIngredients.forEach((boutonFiltreIngredient) =>
     boutonFiltreIngredient.addEventListener("click", () =>
       {
@@ -4240,8 +4125,6 @@ function Recherche() {
           tableauIngredientsFiltres.innerText = listeDesIngredients[l];
         }
 
-        console.log(tableauRecettes);
-
         tableauRecettes = recipes;
 
         // Si tous les ingrédients, appareils et ustensiles ont été supprimés, alors affichage de toutes les recettes
@@ -4266,7 +4149,6 @@ function Recherche() {
                     for(let i = 0; i < tableauRecettes.length; i++) {
                       // Recherche de la valeur dans les ingrédients de la recette
                       let ingredientRecette = tableauRecettes[i].ingredients;
-                      //console.log(ingredientRecette);
                       for (let j= 0; j < ingredientRecette.length; j++) {
                         let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                         // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -4315,9 +4197,6 @@ function Recherche() {
                       }
                     }
 
-                    console.log(elementsTrouves);
-                    //elementsTrouves = [...new Set(elementsTrouves)];
-
                     // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                     listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
 
@@ -4360,9 +4239,6 @@ function Recherche() {
                         }
                       }
                     }
-                    console.log(elementsTrouves);
-                    //elementsTrouves = [...new Set(elementsTrouves)];
-
                     // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                     listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
 
@@ -4398,13 +4274,11 @@ function Recherche() {
       // Création de la liste appareils
       let listeAppareilsRecettes = [];
       let AppareilsRecettes = document.querySelectorAll(".appareils-lightbox");
-      //console.log(AppareilsRecettes);
       AppareilsRecettes.forEach((AppareilRecettes) =>
         {
           listeAppareilsRecettes.push(AppareilRecettes.getAttribute("name"));
         }
       )
-      console.log(listeAppareilsRecettes);
 
       // Tri par ordre alphabétique des valeurs
       listeAppareilsRecettes.sort();
@@ -4532,7 +4406,6 @@ function Recherche() {
           )
           tableauRecettes = elementsTrouves;
         }
-        console.log(tableauRecettes);
 
         // Si tous les appareils ont été supprimés, alors affichage de toutes les recettes
         if (document.querySelector(".buttonsAppareilsRecherches").children.length == 0) {
@@ -4644,7 +4517,6 @@ function Recherche() {
             let boutonsAppareilsFiltres = document.querySelectorAll(".bouton-appareil-filtre");
             boutonsAppareilsFiltres.forEach((boutonAppareilFiltre) =>
               {
-                //console.log(boutonAppareilFiltre.name);
                 let boutonsAppareilsTableau = document.querySelectorAll(".tableau-appareils-filtres");
                 boutonsAppareilsTableau.forEach((boutonAppareilTableau) =>
                   {
@@ -4680,7 +4552,6 @@ function Recherche() {
     }
     )
     let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
-    //console.log(ElementsTrouvesSansDoublons);
 
     let listeRecette = '';
     let recetteLightBox = '';
@@ -4795,8 +4666,6 @@ function Recherche() {
           tableauAppareilsFiltres.innerText = listeDesAppareils[l];
         }
 
-        console.log(tableauRecettes);
-
         tableauRecettes = recipes;
 
         // Si tous les ingrédients, appareils et ustensiles ont été supprimés, alors affichage de toutes les recettes
@@ -4821,7 +4690,6 @@ function Recherche() {
                     for(let i = 0; i < tableauRecettes.length; i++) {
                       // Recherche de la valeur dans les ingrédients de la recette
                       let ingredientRecette = tableauRecettes[i].ingredients;
-                      //console.log(ingredientRecette);
                       for (let j= 0; j < ingredientRecette.length; j++) {
                         let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                         // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -4870,9 +4738,6 @@ function Recherche() {
                       }
                     }
 
-                    console.log(elementsTrouves);
-                    //elementsTrouves = [...new Set(elementsTrouves)];
-
                     // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                     listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
 
@@ -4915,8 +4780,6 @@ function Recherche() {
                         }
                       }
                     }
-                    console.log(elementsTrouves);
-                    //elementsTrouves = [...new Set(elementsTrouves)];
 
                     // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                     listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
@@ -4956,20 +4819,15 @@ function Recherche() {
       let UstensilesRecettes = document.querySelectorAll(".ustensiles-lightbox");
       UstensilesRecettes.forEach((UstensileRecettes) =>
         {
-          //console.log("UstensileRecettes ça marche");
-          //console.log(UstensileRecettes.getAttribute("name"));
           listeUstensilesRecettes1.push(UstensileRecettes.getAttribute("name").split(','));
-          //console.log(listeUstensilesRecettes);
         }
       )
 
       let listeUstensilesRecettes = []
       let listeUstensilesRecettes2 = "";
 
-      console.log(listeUstensilesRecettes1);
       for (let k = 0; listeUstensilesRecettes1.length; k++) {
         let y = listeUstensilesRecettes1[k];
-        //console.log(y);
 
         if (y != undefined) {
           for(let i = 0; i < y.length; i++) {
@@ -4980,16 +4838,12 @@ function Recherche() {
         }
         listeUstensilesRecettes2 = [...new Set(listeUstensilesRecettes)];
         listeUstensilesRecettes2.sort();
-
-        //console.log(listeUstensilesRecettes2);
       }
 
       // Tri par ordre alphabétique des valeurs
       listeUstensilesRecettes2.sort();
       // Supression des doublons du tableau "listeUstensilesRecettes"
       let listeDesUstensiles = [...new Set(listeUstensilesRecettes2)];
-      //console.log(listeDesUstensiles);
-
 
       for (let j = 0; j < listeDesUstensiles.length; j++) {
         let tableauUstensilesFiltres = document.createElement("button");
@@ -5004,13 +4858,10 @@ function Recherche() {
       let boutonsUstensilesFiltres = document.querySelectorAll(".bouton-ustensile-filtre");
       boutonsUstensilesFiltres.forEach((boutonUstensileFiltre) =>
         {
-          //console.log(boutonUstensileFiltre.name);
           let boutonsUstensilesTableau = document.querySelectorAll(".tableau-ustensiles-filtres");
           boutonsUstensilesTableau.forEach((boutonUstensileTableau) =>
             {
-              //console.log(boutonUstensileTableau.getAttribute("name"));
                 if (boutonUstensileTableau.name == boutonUstensileFiltre.name) {
-                //console.log(boutonUstensileTableau.name);
                 boutonUstensileTableau.remove();
               }
             }
@@ -5087,7 +4938,6 @@ function Recherche() {
         listeUstensilesRecettes.sort();
         // Supression des doublons du tableau "listeUstensilesRecettes"
         let listeDesUstensiles = [...new Set(listeUstensilesRecettes)];
-        console.log(listeDesUstensiles);
         // Création de l'affichage de la liste des ustensiles
         for (let l = 0; l <listeDesUstensiles.length; l++) {
           let tableauUstensilesFiltres = document.createElement("button");
@@ -5115,7 +4965,6 @@ function Recherche() {
           )
           tableauRecettes = elementsTrouves;
         }
-        console.log(tableauRecettes);
 
         // Si tous les ustensiles ont été supprimés, alors affichage de toutes les recettes
         if (document.querySelector(".buttonsUstensilesRecherches").children.length == 0) {
@@ -5145,8 +4994,6 @@ function Recherche() {
                       }
                     }
                   }
-                  console.log(elementsTrouves);
-                  //elementsTrouves = [...new Set(elementsTrouves)];
 
                   // Appel de la fonction listeDesRecettesUstensiles() pour l'affichage des recettes restantes
                   listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
@@ -5215,7 +5062,6 @@ function Recherche() {
 
             for (let k = 0; listeUstensilesRecettes.length; k++) {
               let y = listeUstensilesRecettes[k];
-              console.log(y);
       
               if (y != undefined) {
                 for(let i = 0; i < y.length; i++) {
@@ -5230,7 +5076,6 @@ function Recherche() {
             listeUstensilesRecettes1.sort();
             // Supression des doublons du tableau "listeUstensilesRecettes"
             let listeDesUstensiles = [...new Set(listeUstensilesRecettes1)];
-            console.log(listeDesUstensiles);
 
             for (let j = 0; j < listeDesUstensiles.length; j++) {
               let tableauUstensilesFiltres = document.createElement("button");
@@ -5383,7 +5228,6 @@ function Recherche() {
         listeUstensilesRecettes.sort();
         // Supression des doublons du tableau "listeUstensilesRecettes"
         let listeDesUstensiles = [...new Set(listeUstensilesRecettes)];
-        console.log(listeDesUstensiles);
         // Création de l'affichage de la liste des ustensiles
         for (let l = 0; l <listeDesUstensiles.length; l++) {
           let tableauUstensilesFiltres = document.createElement("button");
@@ -5392,8 +5236,6 @@ function Recherche() {
           document.querySelector(".tableau-des-ustensiles").appendChild(tableauUstensilesFiltres);
           tableauUstensilesFiltres.innerText = listeDesUstensiles[l];
         }
-
-        console.log(tableauRecettes);
 
         tableauRecettes = recipes;
 
@@ -5419,7 +5261,6 @@ function Recherche() {
                     for(let i = 0; i < tableauRecettes.length; i++) {
                       // Recherche de la valeur dans les ingrédients de la recette
                       let ingredientRecette = tableauRecettes[i].ingredients;
-                      //console.log(ingredientRecette);
                       for (let j= 0; j < ingredientRecette.length; j++) {
                         let NomIngredientRecetteActuelle = ingredientRecette[j].ingredient;
                         // Injection des recettes contenant l'ingrédient sélectionné dans le tableau "elementsTrouves"
@@ -5468,9 +5309,6 @@ function Recherche() {
                       }
                     }
 
-                    console.log(elementsTrouves);
-                    //elementsTrouves = [...new Set(elementsTrouves)];
-
                     // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                     listeDesRecettesAppareils(tableauRecettes = elementsTrouves);
 
@@ -5513,8 +5351,6 @@ function Recherche() {
                         }
                       }
                     }
-                    console.log(elementsTrouves);
-                    //elementsTrouves = [...new Set(elementsTrouves)];
 
                     // Appel de la fonction listeDesRecettesIngredients() pour l'affichage des recettes restantes
                     listeDesRecettesUstensiles(tableauRecettes = elementsTrouves);
