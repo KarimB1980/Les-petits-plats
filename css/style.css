@@ -222,7 +222,7 @@ header {
 .fa-circle-xmark {
     padding-left: 10px;
 }
-.bouton-ingredient-filtre:hover {
+.bouton-ingredient-filtre:hover, .bouton-appareil-filtre:hover, .bouton-ustensile-filtre:hover {
     cursor: pointer;
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
