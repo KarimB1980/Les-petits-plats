@@ -194,7 +194,6 @@ header {
 }
 .tableau-ingredients-filtres:hover, .tableau-appareils-filtres:hover, .tableau-ustensiles-filtres:hover {
     cursor: pointer;
-    border: #D3573C 2px solid;
     background-color: #D3573C;
     border-radius: 5px;
 }
