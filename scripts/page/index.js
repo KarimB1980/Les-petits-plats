@@ -82,7 +82,7 @@ function recette() {
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
 
     listeRecette += `      <div class="nomTemps">`
-    listeRecette += `        <h3 class="nomRecette">${recipes[i].name}</h3>`;
+    listeRecette += `        <h2 class="nomRecette">${recipes[i].name}</h3>`;
     listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${recipes[i].time} min</h3>`
     listeRecette += `      </div>`
     listeRecette += `      <div class="ingredientsDescription">`
@@ -228,7 +228,7 @@ function Recherche() {
           listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
           listeRecette += `    <div class="nomTempsIngredientsRecette">`
           listeRecette += `      <div class="nomTemps">`
-          listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+          listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
           listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
           listeRecette += `      </div>`
           listeRecette += `      <div class="ingredientsDescription">`
@@ -622,7 +622,7 @@ function Recherche() {
             listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
-            listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+            listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
             listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
             listeRecette += `      </div>`
             listeRecette += `      <div class="ingredientsDescription">`
@@ -1165,7 +1165,7 @@ function Recherche() {
             listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
-            listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+            listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
             listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
             listeRecette += `      </div>`
             listeRecette += `      <div class="ingredientsDescription">`
@@ -1735,7 +1735,7 @@ function Recherche() {
             listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
-            listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+            listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
             listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
             listeRecette += `      </div>`
             listeRecette += `      <div class="ingredientsDescription">`
@@ -2310,7 +2310,7 @@ function Recherche() {
         listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
-        listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+        listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
         listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
         listeRecette += `      </div>`
         listeRecette += `      <div class="ingredientsDescription">`
@@ -2851,7 +2851,7 @@ function Recherche() {
         listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})"`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
-        listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+        listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
         listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
         listeRecette += `      </div>`
         listeRecette += `      <div class="ingredientsDescription">`
@@ -3420,7 +3420,7 @@ function Recherche() {
         listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
-        listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+        listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
         listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
         listeRecette += `      </div>`
         listeRecette += `      <div class="ingredientsDescription">`
@@ -4016,7 +4016,7 @@ function Recherche() {
     listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
-    listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+    listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
     listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
     listeRecette += `      </div>`
     listeRecette += `      <div class="ingredientsDescription">`
@@ -4556,7 +4556,7 @@ function Recherche() {
     listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
-    listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+    listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
     listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
     listeRecette += `      </div>`
     listeRecette += `      <div class="ingredientsDescription">`
@@ -5125,7 +5125,7 @@ function Recherche() {
     listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
-    listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
+    listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
     listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${ElementsTrouvesSansDoublons[i].time} min</h3>`
     listeRecette += `      </div>`
     listeRecette += `      <div class="ingredientsDescription">`
