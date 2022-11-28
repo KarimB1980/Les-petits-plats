@@ -6,6 +6,7 @@ function initialisation() {
 
   enteteindex += `<header>`
   enteteindex += `  <img src="assets/logo.png" id="logo" alt="Les petits plats">`
+  enteteindex += `  <h1>Les petits plats</h1>`
   enteteindex += `</header>`
   enteteindex += `<div>`
   enteteindex += `  <div id="barre-de-recherche-loupe">`

@@ -2,12 +2,23 @@
     margin: 5%
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
-/* Logo */
+/* Logo et titre*/
 header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     margin-bottom: 20px;
+    align-items: center;
+}
+header h1 {
+    color: #D04F4F;
+    font-family: Arial;
+    font-size: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+header img {
+    width: 5%;
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 /* Recherche */
