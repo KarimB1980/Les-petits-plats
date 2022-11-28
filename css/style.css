@@ -432,6 +432,13 @@ article {
 .ingredientRecetteLightbox {
     color: red;
 }
+.portions-lightbox {
+    color: orange;
+    font-size: 1.5em;
+    font-family: Arial;
+    border: 0;
+    font-weight: bold;
+}
 .appareils-lightbox {
     color: blue;
     font-size: 1.5em;
