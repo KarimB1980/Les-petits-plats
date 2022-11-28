@@ -7,13 +7,14 @@ function initialisation() {
   enteteindex += `<header>`
   enteteindex += `  <img src="assets/logo.png" id="logo" alt="Les petits plats">`
   enteteindex += `</header>`
-  enteteindex += `<section id="recherche">`
+  //enteteindex += `<section id="recherche">`
+  enteteindex += `<div>`
   enteteindex += `  <div id="barre-de-recherche-loupe">`
   enteteindex += `    <input type="search" id="barre-de-recherche" name="recherche" placeholder="Rechercher une recette" minlength="3">`
   enteteindex += `    <div id="loupe"><i class="fa fa-search"></i></div>`
   enteteindex += `  </div>`
   enteteindex += `  <div id="messageErreurRecherche"></div>`
-  enteteindex += `</section>`
+  enteteindex += `</div>`
   enteteindex += `<nav>`
   enteteindex += `  <div id="menu">`
 
@@ -26,7 +27,8 @@ function initialisation() {
   enteteindex += `        </div>`
   enteteindex += `        <div class="tableau-des-ingredients"></div>`
   enteteindex += `      </div>`
-  enteteindex += `      <button tabindex="0" id="ingredients" class="bouton"><p class="valeurIngredients"> Ingrédients <em class="fa fa-angle-down"></em></p></button>`
+  //enteteindex += `      <button tabindex="0" id="ingredients" class="bouton"><p class="valeurIngredients"> Ingrédients <em class="fa fa-angle-down"></em></p></button>`
+  enteteindex += `      <button tabindex="0" id="ingredients" class="bouton" style="display: block;"> Ingrédients <em class="fa fa-angle-down"></em></button>`
   enteteindex += `    </div>`
 
   enteteindex += `    <div class="boutons-appareils-recherche-angle-up-liste">`
@@ -38,7 +40,8 @@ function initialisation() {
   enteteindex += `        </div>`
   enteteindex += `        <div class="tableau-des-appareils"></div>`
   enteteindex += `      </div>`
-  enteteindex += `      <button tabindex="0" id="appareils" class="bouton"><p class="valeurAppareils"> Appareils <em class="fa fa-angle-down"></em></p></button>`
+  //enteteindex += `      <button tabindex="0" id="appareils" class="bouton"><p class="valeurAppareils"> Appareils <em class="fa fa-angle-down"></em></p></button>`
+  enteteindex += `      <button tabindex="0" id="appareils" class="bouton" style="display: block;"> Appareils <em class="fa fa-angle-down"></em></button>`
   enteteindex += `    </div>`
 
   enteteindex += `    <div class="boutons-ustensiles-recherche-angle-up-liste">`
@@ -50,7 +53,8 @@ function initialisation() {
   enteteindex += `        </div>`
   enteteindex += `        <div class="tableau-des-ustensiles"></div>`
   enteteindex += `      </div>`
-  enteteindex += `      <button tabindex="0" id="ustensiles" class="bouton"><p class="valeurUstensiles"> Ustensiles <em class="fa fa-angle-down"></em></p></button>`
+  //enteteindex += `      <button tabindex="0" id="ustensiles" class="bouton"><p class="valeurUstensiles"> Ustensiles <em class="fa fa-angle-down"></em></p></button>`
+  enteteindex += `      <button tabindex="0" id="ustensiles" class="bouton" style="display: block;"> Ustensiles <em class="fa fa-angle-down"></em></button>`
   enteteindex += `    </div>`
 
   enteteindex += `  </div>`
@@ -77,36 +81,45 @@ function recette() {
   for (let i = 0; i < recipes.length; i++) {
 
     // Affichage des recettes et création du contenu de la lightbox
-    listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-    listeRecette += `    <div class="vide"></div>`
+    //listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" aria-pressed="true">`
+    listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+    //listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
+
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h3 class="nomRecette">${recipes[i].name}</h3>`;
     listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${recipes[i].time} min</h3>`
     listeRecette += `      </div>`
     listeRecette += `      <div class="ingredientsDescription">`
+    //listeRecette += `        <div class="Ingredients">`
     listeRecette += `        <div class="Ingredients">`
 
     let ingredientRecette = recipes[i].ingredients;
     for (j= 0; j < ingredientRecette.length; j++) {
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+        //listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+        //listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+        //listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
       }
     }
 
+    //listeRecette += `        </div>`
     listeRecette += `        </div>`
     listeRecette += `        <div class="descriptionContenant">`
     listeRecette += `          <h3 class="description">${recipes[i].description}</h3>`
     listeRecette += `        </div>`
     listeRecette += `      </div>`
     listeRecette += `    </div>`
-    listeRecette += `  </button>`
+    //listeRecette += `  </button>`
+    listeRecette += `  </article>`
+
 
     recetteLightBox += `<div class="image-lightbox">`
     recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -128,8 +141,8 @@ function recette() {
         recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
       }
     }
-    recetteLightBox += `        <h3 class="appareils-lightbox" name="${recipes[i].appliance}">Appareils : ${recipes[i].appliance}</h3>`
-    recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${recipes[i].ustensils}">Ustensiles : ${recipes[i].ustensils}</h3>`
+    recetteLightBox += `        <fieldset class="appareils-lightbox" name="${recipes[i].appliance}">Appareils : ${recipes[i].appliance}</fieldset>`
+    recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${recipes[i].ustensils}">Ustensiles : ${recipes[i].ustensils}</fieldset>`
     recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${recipes[i].description}</h3>`
     recetteLightBox += `      </div>`
     recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -222,8 +235,7 @@ function Recherche() {
         for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
 
           // Affichage des recettes et création du contenu de la lightbox
-          listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-          listeRecette += `    <div class="vide"></div>`
+          listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
           listeRecette += `    <div class="nomTempsIngredientsRecette">`
           listeRecette += `      <div class="nomTemps">`
           listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -235,13 +247,13 @@ function Recherche() {
           let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
           for (j= 0; j < ingredientRecette.length; j++) {
             if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-              listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+              listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
             }
             if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-              listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+              listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
             }
             if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-              listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+              listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
             }
           }
       
@@ -251,7 +263,7 @@ function Recherche() {
           listeRecette += `        </div>`
           listeRecette += `      </div>`
           listeRecette += `    </div>`
-          listeRecette += `  </button>`
+          listeRecette += `  </article>`
       
           recetteLightBox += `<div class="image-lightbox">`
           recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -273,8 +285,8 @@ function Recherche() {
               recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
             }
           }
-          recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-          recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+          recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+          recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
           recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
           recetteLightBox += `      </div>`
           recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -618,8 +630,7 @@ function Recherche() {
           for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
 
             // Affichage des recettes et création du contenu de la lightbox
-            listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-            listeRecette += `    <div class="vide"></div>`
+            listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
             listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -631,13 +642,13 @@ function Recherche() {
             let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
             for (j= 0; j < ingredientRecette.length; j++) {
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
               }
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
               }
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
               }
             }
 
@@ -647,7 +658,7 @@ function Recherche() {
             listeRecette += `        </div>`
             listeRecette += `      </div>`
             listeRecette += `    </div>`
-            listeRecette += `  </button>`
+            listeRecette += `  </article>`
 
             recetteLightBox += `<div class="image-lightbox">`
             recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -669,8 +680,8 @@ function Recherche() {
                 recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
               }
             }
-            recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-            recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+            recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+            recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
             recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
             recetteLightBox += `      </div>`
             recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -1162,8 +1173,7 @@ function Recherche() {
           for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
 
             // Affichage des recettes et création du contenu de la lightbox
-            listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-            listeRecette += `    <div class="vide"></div>`
+            listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
             listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -1175,13 +1185,13 @@ function Recherche() {
             let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
             for (j= 0; j < ingredientRecette.length; j++) {
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
               }
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
               }
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
               }
             }
 
@@ -1191,7 +1201,7 @@ function Recherche() {
             listeRecette += `        </div>`
             listeRecette += `      </div>`
             listeRecette += `    </div>`
-            listeRecette += `  </button>`
+            listeRecette += `  </article>`
 
             recetteLightBox += `<div class="image-lightbox">`
             recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -1213,8 +1223,8 @@ function Recherche() {
                 recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
               }
             }
-            recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-            recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+            recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+            recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
             recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
             recetteLightBox += `      </div>`
             recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -1733,8 +1743,7 @@ function Recherche() {
 
           for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
             // Affichage des recettes et création du contenu de la lightbox
-            listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-            listeRecette += `    <div class="vide"></div>`
+            listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
             listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -1746,13 +1755,13 @@ function Recherche() {
             let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
             for (j= 0; j < ingredientRecette.length; j++) {
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
               }
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
               }
               if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-                listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+                listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
               }
             }
 
@@ -1762,7 +1771,7 @@ function Recherche() {
             listeRecette += `        </div>`
             listeRecette += `      </div>`
             listeRecette += `    </div>`
-            listeRecette += `  </button>`
+            listeRecette += `  </article>`
 
             recetteLightBox += `<div class="image-lightbox">`
             recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -1784,8 +1793,8 @@ function Recherche() {
                 recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
               }
             }
-            recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-            recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+            recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+            recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
             recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
             recetteLightBox += `      </div>`
             recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -2308,8 +2317,7 @@ function Recherche() {
         for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
         
         // Affichage des recettes et création du contenu de la lightbox
-        listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-        listeRecette += `    <div class="vide"></div>`
+        listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
         listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -2321,13 +2329,13 @@ function Recherche() {
         let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
         for (j= 0; j < ingredientRecette.length; j++) {
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
           }
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
           }
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
           }
         }
         
@@ -2337,7 +2345,7 @@ function Recherche() {
         listeRecette += `        </div>`
         listeRecette += `      </div>`
         listeRecette += `    </div>`
-        listeRecette += `  </button>`
+        listeRecette += `  </article>`
         
         recetteLightBox += `<div class="image-lightbox">`
         recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -2359,8 +2367,8 @@ function Recherche() {
             recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
           }
         }
-        recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-        recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+        recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+        recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
         recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
         recetteLightBox += `      </div>`
         recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -2850,8 +2858,7 @@ function Recherche() {
         for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
         
         // Affichage des recettes et création du contenu de la lightbox
-        listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-        listeRecette += `    <div class="vide"></div>`
+        listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})"`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
         listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -2863,13 +2870,13 @@ function Recherche() {
         let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
         for (j= 0; j < ingredientRecette.length; j++) {
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
           }
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
           }
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
           }
         }
         
@@ -2879,7 +2886,7 @@ function Recherche() {
         listeRecette += `        </div>`
         listeRecette += `      </div>`
         listeRecette += `    </div>`
-        listeRecette += `  </button>`
+        listeRecette += `  </article>`
         
         recetteLightBox += `<div class="image-lightbox">`
         recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -2901,8 +2908,8 @@ function Recherche() {
             recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
           }
         }
-        recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-        recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+        recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+        recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
         recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
         recetteLightBox += `      </div>`
         recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -3420,8 +3427,7 @@ function Recherche() {
         
         for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
         // Affichage des recettes et création du contenu de la lightbox
-        listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-        listeRecette += `    <div class="vide"></div>`
+        listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
         listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -3433,13 +3439,13 @@ function Recherche() {
         let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
         for (j= 0; j < ingredientRecette.length; j++) {
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
           }
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
           }
           if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-            listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+            listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
           }
         }
         
@@ -3449,7 +3455,7 @@ function Recherche() {
         listeRecette += `        </div>`
         listeRecette += `      </div>`
         listeRecette += `    </div>`
-        listeRecette += `  </button>`
+        listeRecette += `  </article>`
         
         recetteLightBox += `<div class="image-lightbox">`
         recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -3471,8 +3477,8 @@ function Recherche() {
             recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
           }
         }
-        recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-        recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+        recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+        recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
         recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
         recetteLightBox += `      </div>`
         recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -4018,8 +4024,7 @@ function Recherche() {
     for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
 
     // Affichage des recettes et création du contenu de la lightbox
-    listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-    listeRecette += `    <div class="vide"></div>`
+    listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -4031,13 +4036,13 @@ function Recherche() {
     let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
     for (j= 0; j < ingredientRecette.length; j++) {
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
       }
     }
 
@@ -4047,7 +4052,7 @@ function Recherche() {
     listeRecette += `        </div>`
     listeRecette += `      </div>`
     listeRecette += `    </div>`
-    listeRecette += `  </button>`
+    listeRecette += `  </article>`
 
     recetteLightBox += `<div class="image-lightbox">`
     recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -4069,8 +4074,8 @@ function Recherche() {
         recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
       }
     }
-    recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-    recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+    recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+    recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
     recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
     recetteLightBox += `      </div>`
     recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -4559,8 +4564,7 @@ function Recherche() {
     for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
 
     // Affichage des recettes et création du contenu de la lightbox
-    listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-    listeRecette += `    <div class="vide"></div>`
+    listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -4572,13 +4576,13 @@ function Recherche() {
     let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
     for (j= 0; j < ingredientRecette.length; j++) {
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
       }
     }
 
@@ -4588,7 +4592,7 @@ function Recherche() {
     listeRecette += `        </div>`
     listeRecette += `      </div>`
     listeRecette += `    </div>`
-    listeRecette += `  </button>`
+    listeRecette += `  </article>`
 
     recetteLightBox += `<div class="image-lightbox">`
     recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -4610,8 +4614,8 @@ function Recherche() {
         recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
       }
     }
-    recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-    recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+    recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+    recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
     recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
     recetteLightBox += `      </div>`
     recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`
@@ -5129,8 +5133,7 @@ function Recherche() {
 
     for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
     // Affichage des recettes et création du contenu de la lightbox
-    listeRecette += `  <button class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})" role="button" aria-pressed="true">`
-    listeRecette += `    <div class="vide"></div>`
+    listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h3 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -5142,13 +5145,13 @@ function Recherche() {
     let ingredientRecette = ElementsTrouvesSansDoublons[i].ingredients;
     for (j= 0; j < ingredientRecette.length; j++) {
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit != undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity} ${ingredientRecette[j].unit}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity != undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient} : ${ingredientRecette[j].quantity}</fieldset>`
       }
       if (ingredientRecette[j].ingredient != undefined && ingredientRecette[j].quantity == undefined && ingredientRecette[j].unit == undefined) {
-        listeRecette += `    <h3 class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</h3>`
+        listeRecette += `    <fieldset class="ingredientRecette" name="${ingredientRecette[j].ingredient}"> ${ingredientRecette[j].ingredient}</fieldset>`
       }
     }
 
@@ -5158,7 +5161,7 @@ function Recherche() {
     listeRecette += `        </div>`
     listeRecette += `      </div>`
     listeRecette += `    </div>`
-    listeRecette += `  </button>`
+    listeRecette += `  </article>`
 
     recetteLightBox += `<div class="image-lightbox">`
     recetteLightBox += `  <button class="fermer" aria-label="close dialog" onclick="fermerModal()">&times;</button>`
@@ -5180,8 +5183,8 @@ function Recherche() {
         recetteLightBox += `    <h3 class="ingredientRecetteLightbox"> ${ingredientRecette[j].ingredient}</h3>`
       }
     }
-    recetteLightBox += `        <h3 class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</h3>`
-    recetteLightBox += `        <h3 class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</h3>`
+    recetteLightBox += `        <fieldset class="appareils-lightbox" name="${ElementsTrouvesSansDoublons[i].appliance}">Appareils : ${ElementsTrouvesSansDoublons[i].appliance}</fieldset>`
+    recetteLightBox += `        <fieldset class="ustensiles-lightbox" name="${ElementsTrouvesSansDoublons[i].ustensils}">Ustensiles : ${ElementsTrouvesSansDoublons[i].ustensils}</fieldset>`
     recetteLightBox += `        <h3 class="recette-lightbox">Recette : ${ElementsTrouvesSansDoublons[i].description}</h3>`
     recetteLightBox += `      </div>`
     recetteLightBox += `      <button class="suivant" aria-label="Next image" onclick="plusImages(1)">&#10095;</button>`

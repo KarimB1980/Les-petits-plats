@@ -93,16 +93,16 @@ header {
 .ustensiles-recherche-angle-up button{
     background-color: rgb(240, 105, 105);
 }
-.valeurIngredients, .valeurAppareils, .valeurUstensiles {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 7%;
-    margin-right: 7%;
+/*.valeurIngredients, .valeurAppareils, .valeurUstensiles {*/
+#ingredients, #appareils, #ustensiles {
+    padding-left: 10%;
+    padding-right: 10%;
 }
 #ingredients {
      background-color: rgb(0, 140, 255);
-     /*margin-right: 20px;*/
+}
+#ingredients em, #appareils em, #ustensiles em {
+    margin-left: 10%;
 }
 #appareils {
     background-color: rgb(113, 197, 148);
@@ -272,11 +272,21 @@ article {
 .Ingredients {
     margin-right: 20px;
 }
-.Ingredients h3 {
+/*.Ingredients h3 {
     text-align: left;
     margin: 0;
     width: 200px;
+}*/
+.Ingredients fieldset {
+    text-align: left;
+    margin: 0;
+    width: 200px;
+    font-family: Arial;
+    border: 0;
+    padding: 0;
+    font-weight: bold;
 }
+
 .descriptionContenant {
     text-align: left;
     height: 170px;
@@ -297,6 +307,7 @@ article {
 .nomRecette {
     font-size: 20px;
     font-weight: 100;
+    font-family: Arial;
 }
 .tempsRecette {
     font-size: 25px;
@@ -424,12 +435,21 @@ article {
 .appareils-lightbox {
     color: blue;
     font-size: 1.5em;
+    font-family: Arial;
+    border: 0;
+    font-weight: bold;
 }
 .ustensiles-lightbox {
     color: green;
     font-size: 1.5em;
+    font-family: Arial;
+    border: 0;
+    font-weight: bold;
 }
 .recette-lightbox {
     color: orchid;
-    font-size: 1.5eem;
+    font-size: 1.5em;
+    font-family: Arial;
+    border: 0;
+    font-weight: bold;
 }
