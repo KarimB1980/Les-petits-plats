@@ -180,7 +180,33 @@ function Recherche() {
       // FONCTIONS RE RECHERCHE AVEC UTILISATION DU CHAMP DE RECHERCHE PRINCIPAL
       if (champDeRecherche.value.length >= 3) {
         let elementsTrouves = [];
-        for(let i = 0; i < recipes.length; i++) {
+
+        // Recherche par nom
+
+        let rechercheCaracteresNomRecette =  recipes.filter(function(recette) {
+          return recette.name.toLowerCase().includes(champDeRecherche.value.toLowerCase());
+        });
+
+        // Recherche par description
+        let rechercheCaracteresDescriptionRecette =  recipes.filter(function(recette) {
+          return recette.description.toLowerCase().includes(champDeRecherche.value.toLowerCase());
+        });
+
+        // Recherche par ingrédient
+        let tableauRechercheCaracteresIngredientsRecette = [];
+        recipes.filter(function(recette) {
+          let rechercheCaracteresIngredientsRecette = recette.ingredients.filter(function(recette1) {
+            return recette1.ingredient.toLowerCase().includes(champDeRecherche.value.toLowerCase());
+          });
+          if (rechercheCaracteresIngredientsRecette != "") {
+            tableauRechercheCaracteresIngredientsRecette.push(recette);
+          }
+        });
+
+        elementsTrouves = rechercheCaracteresNomRecette.concat(rechercheCaracteresDescriptionRecette, tableauRechercheCaracteresIngredientsRecette)
+        let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
+
+        /*for(let i = 0; i < recipes.length; i++) {
           let champDeRechercheEnMinuscules = champDeRecherche.value.toLowerCase();
           let NomRecetteActuelleEnMinuscules = recipes[i].name.toLowerCase();
           let DescriptionRecetteActuelleEnMinuscules = recipes[i].description.toLowerCase();
@@ -206,7 +232,7 @@ function Recherche() {
             }
           }
         }
-        let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];
+        let ElementsTrouvesSansDoublons = [...new Set(elementsTrouves)];*/
 
         if (ElementsTrouvesSansDoublons == "") {
           // Affichage du message d'erreur sous le champ "Rechercher une recette"
