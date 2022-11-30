@@ -165,9 +165,7 @@ clavierLightboxFormulaire();
 
 // FONCTIONS RE RECHERCHE AVEC OU SANS UTILISATION DU CHAMP DE RECHERCHE PRINCIPAL
 function Recherche() {
-  //let loupe = document.querySelector("#loupe");
   let champDeRecherche = document.querySelector("#barre-de-recherche");
-  //loupe.addEventListener("click", () =>
   champDeRecherche.addEventListener("keyup", () =>
     {
       // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
