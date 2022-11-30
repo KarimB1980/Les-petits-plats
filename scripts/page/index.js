@@ -182,7 +182,6 @@ function Recherche() {
         let elementsTrouves = [];
 
         // Recherche par nom
-
         let rechercheCaracteresNomRecette =  recipes.filter(function(recette) {
           return recette.name.toLowerCase().includes(champDeRecherche.value.toLowerCase());
         });
