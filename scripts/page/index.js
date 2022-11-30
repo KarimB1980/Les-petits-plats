@@ -3721,7 +3721,7 @@ function Recherche() {
     }
   )
 
-  // FONCTIONS POUR LES INGREDIENTS SANS UTILISATION DU CHAMP DE RECHERCHE PRINCIPAL
+  // FONCTIONS DE RECHERCHE SANS UTILISATION DU CHAMP DE RECHERCHE PRINCIPAL
   if (champDeRecherche.value.length < 3) {
     recette();
       //-------------------------------------------------------------------------------------------------------------------------------------------//
