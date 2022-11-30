@@ -165,9 +165,7 @@ clavierLightboxFormulaire();
 
 // FONCTIONS RE RECHERCHE AVEC OU SANS UTILISATION DU CHAMP DE RECHERCHE PRINCIPAL
 function Recherche() {
-  //let loupe = document.querySelector("#loupe");
   let champDeRecherche = document.querySelector("#barre-de-recherche");
-  //loupe.addEventListener("click", () =>
   champDeRecherche.addEventListener("keyup", () =>
     {
       // Simulation d'un clic sur la flèche vers le haut dans le champs de recherche d'un ingrédient
@@ -3786,11 +3784,12 @@ function Recherche() {
     }
   )
 
-  // FONCTIONS POUR LES INGREDIENTS SANS UTILISATION DU CHAMP DE RECHERCHE PRINCIPAL
+  // FONCTIONS DE RECHERCHE SANS UTILISATION DU CHAMP DE RECHERCHE PRINCIPAL
   if (champDeRecherche.value.length < 3) {
     recette();
       //-------------------------------------------------------------------------------------------------------------------------------------------//
 
+    // FONCTIONS POUR LES INGREDIENTS //
     // Fonction pour la création de la liste des ingrédients
     function listeIngredients() { 
       let ingredients = document.querySelector("#ingredients");
