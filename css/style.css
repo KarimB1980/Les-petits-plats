@@ -257,12 +257,12 @@ article {
     border-radius:5px;
     margin-bottom: 50px;
 }
-/*.vide {
+.vide {
     height: 250px;
     background-color: rgb(182, 174, 174);
     margin: 0;
     border-radius:5px 5px 0 0;
-}*/
+}
 .nomTempsIngredientsRecette {
     margin-top: 10px;
     margin-left: 3%;

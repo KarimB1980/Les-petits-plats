@@ -79,8 +79,8 @@ function recette() {
 
     // Affichage des recettes et création du contenu de la lightbox
     listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+    listeRecette += `    <div class="vide"></div>`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
-
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h2 class="nomRecette">${recipes[i].name}</h3>`;
     listeRecette += `        <h3 class="tempsRecette"><i class="fa-regular fa-clock"></i> ${recipes[i].time} min</h3>`
@@ -254,6 +254,7 @@ function Recherche() {
           // Affichage des recettes et création du contenu de la lightbox
           //listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
           listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${numeroRecette})">`
+          listeRecette += `    <div class="vide"></div>`
           listeRecette += `    <div class="nomTempsIngredientsRecette">`
           listeRecette += `      <div class="nomTemps">`
           //listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -681,6 +682,7 @@ function Recherche() {
 
             // Affichage des recettes et création du contenu de la lightbox
             listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+            listeRecette += `    <div class="vide"></div>`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
             listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -1224,6 +1226,7 @@ function Recherche() {
 
             // Affichage des recettes et création du contenu de la lightbox
             listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+            listeRecette += `    <div class="vide"></div>`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
             listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -1794,6 +1797,7 @@ function Recherche() {
           for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
             // Affichage des recettes et création du contenu de la lightbox
             listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+            listeRecette += `    <div class="vide"></div>`
             listeRecette += `    <div class="nomTempsIngredientsRecette">`
             listeRecette += `      <div class="nomTemps">`
             listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -2369,6 +2373,7 @@ function Recherche() {
         
         // Affichage des recettes et création du contenu de la lightbox
         listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+        listeRecette += `    <div class="vide"></div>`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
         listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -2910,6 +2915,7 @@ function Recherche() {
         
         // Affichage des recettes et création du contenu de la lightbox
         listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})"`
+        listeRecette += `    <div class="vide"></div>`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
         listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -3479,6 +3485,7 @@ function Recherche() {
         for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
         // Affichage des recettes et création du contenu de la lightbox
         listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+        listeRecette += `    <div class="vide"></div>`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
         listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -4076,6 +4083,7 @@ function Recherche() {
 
     // Affichage des recettes et création du contenu de la lightbox
     listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+    listeRecette += `    <div class="vide"></div>`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -4616,6 +4624,7 @@ function Recherche() {
 
     // Affichage des recettes et création du contenu de la lightbox
     listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+    listeRecette += `    <div class="vide"></div>`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
@@ -5185,6 +5194,7 @@ function Recherche() {
     for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
     // Affichage des recettes et création du contenu de la lightbox
     listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
+    listeRecette += `    <div class="vide"></div>`
     listeRecette += `    <div class="nomTempsIngredientsRecette">`
     listeRecette += `      <div class="nomTemps">`
     listeRecette += `        <h2 class="nomRecette">${ElementsTrouvesSansDoublons[i].name}</h3>`;
