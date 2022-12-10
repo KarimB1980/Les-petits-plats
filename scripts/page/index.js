@@ -2940,7 +2940,7 @@ function Recherche() {
         for (let i = 0; i < ElementsTrouvesSansDoublons.length; i++) {
         
         // Affichage des recettes et création du contenu de la lightbox
-        listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})"`
+        listeRecette += `  <article class="detailsRecette" onclick="ouvrirModal();imageActuelle(${1+i})">`
         listeRecette += `    <div class="vide"></div>`
         listeRecette += `    <div class="nomTempsIngredientsRecette">`
         listeRecette += `      <div class="nomTemps">`
