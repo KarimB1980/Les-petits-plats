@@ -508,7 +508,9 @@ function Recherche() {
                     )
                   }
                 )
-                suppressionBoutonFiltreIngredient(tableauRecettes = ElementsTrouvesSansDoublons)        //------------------------------------------------------------------------------------------------------------------------------------------//
+                suppressionBoutonFiltreIngredient(tableauRecettes = ElementsTrouvesSansDoublons);
+                marges();        
+                //------------------------------------------------------------------------------------------------------------------------------------------//
 
               }
             )
@@ -870,6 +872,7 @@ function Recherche() {
                     }
                   )
                 }
+                marges();
               }
             )
           )
@@ -1051,7 +1054,8 @@ function Recherche() {
                     )
                   }
                 )
-                suppressionBoutonFiltreAppareil(tableauRecettes = ElementsTrouvesSansDoublons);      
+                suppressionBoutonFiltreAppareil(tableauRecettes = ElementsTrouvesSansDoublons);
+                marges();      
               }
             )
           )
@@ -1412,6 +1416,7 @@ function Recherche() {
                     }
                   )
                 }
+                marges();
               }
             )
           )
@@ -1456,7 +1461,7 @@ function Recherche() {
               }
 
               // Tri par ordre alphabétique des valeurs
-              listeUstensilesRecettes2.sort();
+              //listeUstensilesRecettes2.sort();
               // Supression des doublons du tableau "listeUstensilesRecettes"
               let listeDesUstensiles = [...new Set(listeUstensilesRecettes2)];
 
@@ -1616,6 +1621,7 @@ function Recherche() {
                   }
                 )
                 suppressionBoutonFiltreUstensile(tableauRecettes = ElementsTrouvesSansDoublons);
+                marges();
               }
             )
           )
@@ -1983,6 +1989,7 @@ function Recherche() {
                     }
                   )
                 }
+                marges();
               }
             )
           )
@@ -2014,8 +2021,86 @@ function Recherche() {
             )
           )
         }
-        clickFaAngleUp();      
-        //-------------------------------------------------------------------------------------------------------------------------------------------//
+        clickFaAngleUp();
+        
+        // Fonction de gestion des marges des boutons "Ingrédients", "Appareils" et "Ustensiles"
+        function marges() {
+          const buttonsIngredientsRecherches = document.querySelector(".buttonsIngredientsRecherches");
+          const buttonsAppareilsRecherches = document.querySelector(".buttonsAppareilsRecherches");
+          const buttonsUstensilesRecherches = document.querySelector(".buttonsUstensilesRecherches");
+    
+          if (buttonsIngredientsRecherches.children.length != 0  && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#ustensiles").style.marginTop = "0px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "20px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+        }        //-------------------------------------------------------------------------------------------------------------------------------------------//
 
       } else if (champDeRecherche.value.length < 3) {
 
@@ -2199,7 +2284,8 @@ function Recherche() {
                     )
                   }
                 )
-                suppressionBoutonFiltreIngredient(tableauRecettes = recipes)        
+                suppressionBoutonFiltreIngredient(tableauRecettes = recipes);
+                marges();        
                 //------------------------------------------------------------------------------------------------------------------------------------------//
               }
             )
@@ -2549,6 +2635,7 @@ function Recherche() {
                     }
                   )
                 }
+                marges();
               }
             )
           )
@@ -2740,7 +2827,8 @@ function Recherche() {
                     )
                   }
                 )
-                suppressionBoutonFiltreAppareil(tableauRecettes = recipes);      
+                suppressionBoutonFiltreAppareil(tableauRecettes = recipes);
+                marges();      
               }
             )
           )
@@ -3091,6 +3179,7 @@ function Recherche() {
                 }
               )
             }
+            marges();
           }
         )
         )
@@ -3134,7 +3223,7 @@ function Recherche() {
           }
         
           // Tri par ordre alphabétique des valeurs
-          listeUstensilesRecettes2.sort();
+          //listeUstensilesRecettes2.sort();
           // Supression des doublons du tableau "listeUstensilesRecettes"
           let listeDesUstensiles = [...new Set(listeUstensilesRecettes2)];        
         
@@ -3304,6 +3393,7 @@ function Recherche() {
               }
             )
             suppressionBoutonFiltreUstensile(tableauRecettes = recipes);
+            marges();
           }
         )
         )
@@ -3661,6 +3751,7 @@ function Recherche() {
                 }
               )
             }
+            marges();
           }
         )
         )
@@ -3693,8 +3784,85 @@ function Recherche() {
         )
         }
         clickFaAngleUp();
-          
-          //-------------------------------------------------------------------------------------------------------------------------------------------//
+        
+        // Fonction de gestion des marges des boutons "Ingrédients", "Appareils" et "Ustensiles"
+        function marges() {
+          const buttonsIngredientsRecherches = document.querySelector(".buttonsIngredientsRecherches");
+          const buttonsAppareilsRecherches = document.querySelector(".buttonsAppareilsRecherches");
+          const buttonsUstensilesRecherches = document.querySelector(".buttonsUstensilesRecherches");
+    
+          if (buttonsIngredientsRecherches.children.length != 0  && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length != 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+            document.querySelector("#ustensiles").style.marginTop = "0px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "20px";
+          }
+    
+          if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length == 0) {
+            document.querySelector("#ingredients").style.marginTop = "20px";
+            document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#appareils").style.marginTop = "20px";
+            document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+            document.querySelector("#ustensiles").style.marginTop = "20px";
+            document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+          }
+        }          //-------------------------------------------------------------------------------------------------------------------------------------------//
         // Filtrage de la liste des recettes en fonction des ingrédients sélectionnés
         if (document.querySelector(".buttonsIngredientsRecherches").children.length != 0) {
           // Création d'un bouton à supprimer pour le lancement de la fonction suppressionBoutonFiltreIngredient()
@@ -3908,7 +4076,8 @@ function Recherche() {
                 )
               }
             )
-            suppressionBoutonFiltreIngredient(tableauRecettes = recipes)        
+            suppressionBoutonFiltreIngredient(tableauRecettes = recipes);
+            marges();        
             //------------------------------------------------------------------------------------------------------------------------------------------//
           }
         )
@@ -4257,6 +4426,7 @@ function Recherche() {
             }
           )
         }
+        marges();
       }
     )
     )
@@ -4448,7 +4618,8 @@ function Recherche() {
             )
           }
         )
-        suppressionBoutonFiltreAppareil(tableauRecettes = recipes);      
+        suppressionBoutonFiltreAppareil(tableauRecettes = recipes);
+        marges();
       }
     )
     )
@@ -4799,6 +4970,7 @@ function Recherche() {
             }
           )
         }
+        marges();
       }
     )
     )
@@ -4842,7 +5014,7 @@ function Recherche() {
       }
 
       // Tri par ordre alphabétique des valeurs
-      listeUstensilesRecettes2.sort();
+      //listeUstensilesRecettes2.sort();
       // Supression des doublons du tableau "listeUstensilesRecettes"
       let listeDesUstensiles = [...new Set(listeUstensilesRecettes2)];
 
@@ -5012,6 +5184,7 @@ function Recherche() {
           }
         )
         suppressionBoutonFiltreUstensile(tableauRecettes = recipes);
+        marges();
       }
     )
     )
@@ -5370,6 +5543,7 @@ function Recherche() {
             }
           )
         }
+        marges();
       }
     )
     )
@@ -5403,6 +5577,84 @@ function Recherche() {
     }
     clickFaAngleUp();
 
+    // Fonction de gestion des marges des boutons "Ingrédients", "Appareils" et "Ustensiles"
+    function marges() {
+      const buttonsIngredientsRecherches = document.querySelector(".buttonsIngredientsRecherches");
+      const buttonsAppareilsRecherches = document.querySelector(".buttonsAppareilsRecherches");
+      const buttonsUstensilesRecherches = document.querySelector(".buttonsUstensilesRecherches");
+
+      if (buttonsIngredientsRecherches.children.length != 0  && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length == 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+        document.querySelector("#ustensiles").style.marginTop = "20px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+      }
+
+      if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length != 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+        document.querySelector("#ustensiles").style.marginTop = "20px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+      }
+
+      if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length == 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#ustensiles").style.marginTop = "20px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+      }
+
+      if (buttonsIngredientsRecherches.children.length != 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length != 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#ustensiles").style.marginTop = "20px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+      }
+
+      if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length == 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#ustensiles").style.marginTop = "20px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "63px";
+      }
+
+      if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length != 0 && buttonsUstensilesRecherches.children.length != 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#ustensiles").style.marginTop = "20px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+      }
+
+      if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length != 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "63px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "63px";
+        document.querySelector("#ustensiles").style.marginTop = "0px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "20px";
+      }
+
+      if (buttonsIngredientsRecherches.children.length == 0 && buttonsAppareilsRecherches.children.length == 0 && buttonsUstensilesRecherches.children.length == 0) {
+        document.querySelector("#ingredients").style.marginTop = "20px";
+        document.querySelector(".ingredients-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#appareils").style.marginTop = "20px";
+        document.querySelector(".appareils-recherche-angle-up").style.marginTop = "0px";
+        document.querySelector("#ustensiles").style.marginTop = "20px";
+        document.querySelector(".ustensiles-recherche-angle-up").style.marginTop = "0px";
+      }
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------//
   }
 }
